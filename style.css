@@ -1,0 +1,330 @@
+/* Variables CSS pour les couleurs */
+:root {
+    --primary-color: #4CAF50; /* Vert pour l'action et les succès */
+    --secondary-color: #3f51b5; /* Bleu pour les titres */
+    --text-color: #333;
+    --bg-color: #f4f4f4;
+    --card-bg: #fff;
+    --border-color: #ddd;
+    --error-color: #f44336; /* Rouge pour les erreurs */
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    background: var(--secondary-color);
+    color: #fff;
+    padding: 1.5rem 0;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+header h1 {
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px; /* Espace entre icône et texte */
+}
+
+header h1 .fas {
+    font-size: 1.5em; /* Taille de l'icône */
+}
+
+main {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    flex-grow: 1;
+}
+
+.calculator-section {
+    background: var(--card-bg);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.calculator-section h2 {
+    color: var(--secondary-color);
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.5rem; /* Augmente l'espace pour les messages d'erreur */
+}
+
+.input-group label {
+    margin-bottom: 0.4rem;
+    font-weight: bold;
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Espace entre icône et label */
+}
+
+.input-group input[type="number"],
+.input-group select {
+    padding: 0.8rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 1rem;
+    width: calc(100% - 1.6rem); /* Pour compenser le padding */
+    max-width: 300px; /* Limite la largeur sur grand écran */
+    box-sizing: border-box; /* Inclure padding et border dans la largeur */
+}
+
+.input-group select {
+    appearance: none; /* Supprime le style par défaut du select */
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22%234CAF50%22%3E%3Cpath%20d%3D%22M7%2010l5%205%205-5z%22%2F%3E%3C%2Fsvg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.8rem center;
+    background-size: 1.5em;
+    padding-right: 2.5rem; /* Pour que la flèche ne recouvre pas le texte */
+}
+
+
+.input-group input[type="number"]:focus,
+.input-group select:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
+}
+
+/* Styles pour les messages d'erreur */
+.error-message {
+    color: var(--error-color);
+    font-size: 0.85rem;
+    margin-top: 0.4rem;
+    height: 1.2em; /* Pour éviter les sauts de mise en page */
+    visibility: hidden; /* Caché par défaut */
+}
+
+.error-message.visible {
+    visibility: visible;
+}
+
+
+button#calculateBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    max-width: 300px;
+    margin: 2rem auto;
+    padding: 1rem 2rem;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+button#calculateBtn:hover {
+    background: #45a049; /* légèrement plus foncé */
+}
+
+.results-section {
+    background: var(--card-bg);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    text-align: center;
+    margin-top: 2rem; /* Espace au-dessus des résultats */
+}
+
+.results-section h2 {
+    color: var(--secondary-color);
+    border-bottom: 2px solid var(--secondary-color);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+#results p {
+    font-size: 1.1rem;
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+}
+
+#results strong {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+}
+
+.chart-container {
+    position: relative;
+    width: 100%;
+    max-width: 500px; /* Taille maximale du graphique */
+    margin: 2rem auto;
+    background-color: #f9f9f9;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: inset 0 0 5px rgba(0,0,0,0.05);
+}
+
+.monetization-links {
+    margin-top: 2.5rem;
+    border-top: 1px dashed var(--border-color);
+    padding-top: 2rem;
+}
+
+.monetization-links h3 {
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.monetization-links a {
+    display: block;
+    background: var(--secondary-color);
+    color: white;
+    padding: 0.8rem 1.5rem;
+    margin: 0.8rem auto;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background 0.3s ease;
+    max-width: 350px;
+}
+
+.monetization-links a:hover {
+    background: #303f9f;
+}
+
+footer {
+    text-align: center;
+    padding: 1.5rem 1rem;
+    background: var(--secondary-color);
+    color: #fff;
+    margin-top: 2rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    main {
+        margin: 1rem auto;
+        padding: 0 0.5rem;
+    }
+
+    .calculator-section {
+        padding: 1.5rem;
+    }
+
+    .input-group input[type="number"],
+    .input-group select,
+    button#calculateBtn {
+        width: 100%;
+        max-width: none;
+    }
+}
+
+/* ... Votre CSS existant ... */
+
+.car-specs-section {
+    background: var(--card-bg);
+    padding: 2rem;
+    margin-top: 2rem; /* Espace au-dessus */
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.car-specs-section h2 {
+    color: var(--secondary-color);
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.car-details-card {
+    background: #f9f9f9;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+    display: flex; /* Utilisation de flexbox pour la mise en page interne */
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.car-details-card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+}
+
+.car-details-card h3 {
+    color: var(--primary-color);
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+}
+
+.car-details-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.car-details-card ul li {
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.car-details-card ul li .fas {
+    color: var(--secondary-color);
+}
+
+.car-details-card .advantages-list,
+.car-details-card .disadvantages-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 0.5rem;
+}
+
+.car-details-card .advantages-list li,
+.car-details-card .disadvantages-list li {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.95rem;
+}
+
+.car-details-card .advantages-list li .fas.fa-check-circle {
+    color: #28a745; /* Vert pour avantages */
+}
+
+.car-details-card .disadvantages-list li .fas.fa-times-circle {
+    color: #dc3545; /* Rouge pour inconvénients */
+}
