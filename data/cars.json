@@ -28,20 +28,30 @@
     "marque": "Renault",
     "modele": "Clio E-Tech",
     "annee": "2024",
-    "type": "Hybride",
-    "motorisation": "1.6 E-Tech full hybrid",
+    "type": "Hybride (non rechargeable)",
+    "motorisation": "E-Tech full hybrid 145",
+    "autonomie_electrique_wlpt": "N/A (hybride non rechargeable)",
+    "batterie_utile": "1.2 kWh",
     "puissance_totale": "145 ch",
+    "0_100kmh": "9.3s",
     "conso_mixte_wlpt": "4.2 L/100km",
     "emissions_co2": "96 g/km",
-    "prix_a_partir": "24900 €",
-    "image": "images/clio.jpg",
-    "description_courte": "Une citadine polyvalente et économique, idéale pour la ville et les trajets mixtes.",
+    "charge_ac_max": "N/A (hybride non rechargeable)",
+    "charge_dc_max": "N/A (hybride non rechargeable)",
+    "prix_a_partir": "24000 €",
+    "image": "images/renault-clio-e-tech.jpg",
+    "description_courte": "La citadine hybride française, reconnue pour son efficience, son design revisité et son agrément de conduite en ville.",
     "avantages": [
-      "Faible consommation",
-      "Conduite douce en ville",
-      "Design compact"
+      "Faible consommation en ville",
+      "Confort de conduite",
+      "Design rafraîchi",
+      "Boîte de vitesses multi-modes innovante"
     ],
-    "inconvenients": ["Autonomie électrique limitée", "Coffre réduit"]
+    "inconvenients": [
+      "Espace aux places arrière limité",
+      "Coffre légèrement réduit par rapport aux versions thermiques",
+      "Prix plus élevé que les versions essence classiques"
+    ]
   },
   {
     "id": "peugeot-3008-phev-2024",
@@ -53,21 +63,25 @@
     "autonomie_electrique_wlpt": "67 km",
     "batterie_utile": "12.4 kWh",
     "puissance_totale": "180 ch",
+    "0_100kmh": "8.8s",
     "conso_mixte_wlpt": "1.3 L/100km",
     "emissions_co2": "29 g/km",
     "charge_ac_max": "7.4 kW",
+    "charge_dc_max": "N/A (hybride rechargeable)",
     "prix_a_partir": "45000 €",
-    "image": "images/3008.jpg",
+    "image": "images/peugeot-3008-phev.jpg",
     "description_courte": "Un SUV familial spacieux et confortable, avec la polyvalence de l'hybride rechargeable.",
     "avantages": [
       "Confort",
       "Finition intérieure",
-      "Autonomie électrique suffisante pour le quotidien"
+      "Autonomie électrique suffisante pour le quotidien",
+      "Polyvalence (électrique et thermique)"
     ],
     "inconvenients": [
       "Prix élevé",
       "Poids important",
-      "Consommation thermique sur longs trajets si batterie vide"
+      "Consommation thermique sur longs trajets si batterie vide",
+      "Pas de recharge rapide DC"
     ]
   },
   {
@@ -80,9 +94,11 @@
     "autonomie_electrique_wlpt": "N/A (hybride non rechargeable)",
     "batterie_utile": "1.83 kWh",
     "puissance_totale": "194 ch",
+    "0_100kmh": "8.0s",
     "conso_mixte_wlpt": "4.4 L/100km",
     "emissions_co2": "100 g/km",
     "charge_ac_max": "N/A (hybride non rechargeable)",
+    "charge_dc_max": "N/A (hybride non rechargeable)",
     "prix_a_partir": "20000 €",
     "image": "images/mg3.jpg",
     "description_courte": "Une citadine hybride abordable et performante, offrant une consommation maîtrisée et un bon niveau d'équipement.",
@@ -97,5 +113,36 @@
       "Confort de suspension ferme à basse vitesse",
       "Finition intérieure en deçà de certains concurrents"
     ]
-  }
+  },
+  {
+  "id": "seat-leon-v-1-5-etsi-150-2024",
+  "marque": "Seat",
+  "modele": "Leon V 1.5 eTSI",
+  "annee": "2024",
+  "type": "Hybride léger (mild-hybrid)",
+  "motorisation": "1.5 eTSI 150 ch DSG7",
+  "autonomie_electrique_wlpt": "N/A (hybride léger)",
+  "batterie_utile": "0.3 kWh (environ, pour système 48V)",
+  "puissance_totale": "150 ch",
+  "0_100kmh": "8.4s",
+  "conso_mixte_wlpt": "5.6 L/100km",
+  "emissions_co2": "128 g/km",
+  "charge_ac_max": "N/A (hybride léger)",
+  "charge_dc_max": "N/A (hybride léger)",
+  "prix_a_partir": "30000 €",
+  "image": "images/leon-V-etsi.jpg",
+  "description_courte": "Une berline compacte au design dynamique, offrant un bon équilibre entre performances et consommation grâce à sa technologie hybride légère.",
+  "avantages": [
+    "Bonne réactivité du moteur",
+    "Consommation maîtrisée pour la puissance",
+    "Boîte DSG7 fluide",
+    "Design attrayant",
+    "Confort de suspension"
+  ],
+  "inconvenients": [
+    "Système hybride peu perceptible en conduite (pas de roulage 100% électrique significatif)",
+    "Certains plastiques intérieurs",
+    "Options qui peuvent faire monter le prix"
+  ]
+}
 ]
