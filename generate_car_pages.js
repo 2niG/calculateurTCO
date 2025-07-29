@@ -67,8 +67,8 @@ async function generateCarPages() {
         pageHtml = pageHtml.replace(/{{car_puissance_totale}}/g, isValidData(car.puissance_totale) ? car.puissance_totale : 'N/A');
         
         // Remplacer les placeholders conditionnels (HTML complet si la donnée existe et est valide)
-        pageHtml = pageHtml.replace(/{{car_motorisation}}/g, 
-            isValidData(car.motorisation) ? `<li><i class="fas fa-cogs"></i> Motorisation : <strong>${car.motorisation}</strong></li>` : ''
+        pageHtml = pageHtml.replace(/{{car_motorisation_html}}/g, // Changement ici !
+        isValidData(car.motorisation) ? `<li><i class="fas fa-cogs"></i> Motorisation : <strong>${car.motorisation}</strong></li>` : ''
         );
 
         // CORRECTION 2: Gérer autonomie_wlpt_html et autonomie_electrique_wlpt_html
