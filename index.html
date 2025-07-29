@@ -1,174 +1,318 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculateur TCO VE/Hybride & Fiches Techniques</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculateur TCO et Fiches Techniques Véhicules</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <header>
-        <h1><i class="fas fa-calculator"></i> Calculateur de Coût Total de Possession (TCO)</h1>
-        <p>Estimez les économies potentielles avec un véhicule électrique ou hybride.</p>
+      <h1>
+        <i class="fas fa-car-side"></i> Coût Total de Possession (TCO) & Fiches
+        Techniques
+      </h1>
+      <p>
+        Comparez le coût de votre véhicule actuel avec un VE ou Hybride, et
+        consultez les fiches techniques détaillées.
+      </p>
+
+      <nav class="main-nav">
+        <ul>
+          <li>
+            <a href="#" data-section="calculatorSection" class="active-link"
+              ><i class="fas fa-calculator"></i> Calculateur TCO</a
+            >
+          </li>
+          <li>
+            <a href="#" data-section="carSpecsSection"
+              ><i class="fas fa-car"></i> Fiches Techniques</a
+            >
+          </li>
+        </ul>
+      </nav>
     </header>
 
     <main>
-        <section class="calculator-section">
-            <h2><i class="fas fa-gas-pump"></i> Votre Véhicule Actuel</h2>
-            <div class="input-group">
-                <label for="kmAnnuels"><i class="fas fa-route"></i> Kilomètres annuels parcourus :</label>
-                <input type="number" id="kmAnnuels" value="15000" min="0"> km
-                <p class="error-message" id="error-kmAnnuels"></p>
-            </div>
-            <div class="input-group">
-                <label for="typeVehiculeThermique"><i class="fas fa-car"></i> Type de véhicule actuel :</label>
-                <select id="typeVehiculeThermique">
-                    <option value="essence">Essence</option>
-                    <option value="diesel">Diesel</option>
-                </select>
-            </div>
-            <div class="input-group">
-                <label for="consoThermique"><i class="fas fa-tachometer-alt"></i> Consommation du véhicule thermique :</label>
-                <input type="number" id="consoThermique" value="7" step="0.1" min="0"> <span id="unitThermique">L/100km</span>
-                <p class="error-message" id="error-consoThermique"></p>
-            </div>
-            <div class="input-group">
-                <label for="prixCarburant"><i class="fas fa-euro-sign"></i> Prix du carburant/électricité :</label>
-                <input type="number" id="prixCarburant" value="1.80" step="0.01" min="0"> <span id="unitPrixCarburant">€/L</span>
-                <p class="error-message" id="error-prixCarburant"></p>
-            </div>
-            <div class="input-group">
-                <label for="prixAchatThermique"><i class="fas fa-hand-holding-usd"></i> Prix d'achat du véhicule thermique :</label>
-                <input type="number" id="prixAchatThermique" value="25000" min="0"> €
-                <p class="error-message" id="error-prixAchatThermique"></p>
-            </div>
-            <div class="input-group">
-                <label for="entretienThermique"><i class="fas fa-wrench"></i> Coût entretien annuel thermique :</label>
-                <input type="number" id="entretienThermique" value="500" min="0"> €
-                <p class="error-message" id="error-entretienThermique"></p>
-            </div>
-            <div class="input-group">
-                <label for="assuranceThermique"><i class="fas fa-shield-alt"></i> Coût assurance annuel thermique :</label>
-                <input type="number" id="assuranceThermique" value="800" min="0"> €
-                <p class="error-message" id="error-assuranceThermique"></p>
-            </div>
-            <div class="input-group">
-                <label for="reventeThermique"><i class="fas fa-sync-alt"></i> Valeur de revente estimée (après X ans) :</label>
-                <input type="number" id="reventeThermique" value="10000" min="0"> €
-                <p class="error-message" id="error-reventeThermique"></p>
-            </div>
-        </section>
+      <section id="calculatorSection" class="active">
+        <h2>
+          <i class="fas fa-calculator"></i> Calculateur de Coût Total de
+          Possession (TCO)
+        </h2>
+        <p>
+          Estimez les économies potentielles en passant à un véhicule électrique
+          ou hybride.
+        </p>
 
-        <section class="calculator-section">
-            <h2><i class="fas fa-bolt"></i> Votre Futur Véhicule (Cible)</h2>
+        <div class="form-container">
+          <fieldset class="input-group-grid">
+            <legend>
+              <i class="fas fa-fire"></i> Votre Véhicule Thermique Actuel
+            </legend>
             <div class="input-group">
-                <label for="typeVehiculeCible"><i class="fas fa-car-battery"></i> Type de véhicule ciblé :</label>
-                <select id="typeVehiculeCible">
-                    <option value="electrique">Électrique (VE)</option>
-                    <option value="hybride">Hybride (HEV)</option>
-                    <option value="hybride-rechargeable">Hybride Rechargeable (PHEV)</option>
-                </select>
+              <label for="typeVehiculeThermique">Type de Carburant :</label>
+              <select id="typeVehiculeThermique">
+                <option value="essence">Essence</option>
+                <option value="diesel">Diesel</option>
+              </select>
             </div>
             <div class="input-group">
-                <label for="consoVE"><i class="fas fa-tachometer-alt"></i> Consommation du VE/Hybride :</label>
-                <input type="number" id="consoVE" value="15" step="0.1" min="0"> <span id="unitVE">kWh/100km</span>
-                <p class="error-message" id="error-consoVE"></p>
+              <label for="consoThermique">Consommation :</label>
+              <input
+                type="number"
+                id="consoThermique"
+                value="7.0"
+                step="0.1"
+                min="0.1"
+              />
+              <span class="unit" id="unitThermique">L/100km</span>
+              <span class="error-message" id="error-consoThermique"></span>
             </div>
-            <div class="input-group" id="group-prixElectricite">
-                <label for="prixElectricite"><i class="fas fa-euro-sign"></i> Prix de l'électricité :</label>
-                <input type="number" id="prixElectricite" value="0.25" step="0.01" min="0"> €/kWh
-                <p class="error-message" id="error-prixElectricite"></p>
+            <div class="input-group">
+              <label for="prixCarburant">Prix du Carburant :</label>
+              <input
+                type="number"
+                id="prixCarburant"
+                value="1.80"
+                step="0.01"
+                min="0.01"
+              />
+              <span class="unit" id="unitPrixCarburant">€/L</span>
+              <span class="error-message" id="error-prixCarburant"></span>
             </div>
-             <div class="input-group" id="group-prixCarburantVE">
-                <label for="prixCarburantVE"><i class="fas fa-euro-sign"></i> Prix du carburant (pour hybrides) :</label>
-                <input type="number" id="prixCarburantVE" value="1.80" step="0.01" min="0"> €/L
-                <p class="error-message" id="error-prixCarburantVE"></p>
+            <div class="input-group">
+              <label for="prixAchatThermique">Prix d'achat :</label>
+              <input
+                type="number"
+                id="prixAchatThermique"
+                value="25000"
+                min="0"
+              />
+              <span class="unit">€</span>
+              <span class="error-message" id="error-prixAchatThermique"></span>
             </div>
-            <div class="input-group" id="group-consoCarburantVE">
-                <label for="consoCarburantVE"><i class="fas fa-tachometer-alt"></i> Consommation carburant (pour hybrides) :</label>
-                <input type="number" id="consoCarburantVE" value="5" step="0.1" min="0"> L/100km
-                <p class="error-message" id="error-consoCarburantVE"></p>
+            <div class="input-group">
+              <label for="entretienThermique">Coût Entretien Annuel :</label>
+              <input
+                type="number"
+                id="entretienThermique"
+                value="500"
+                min="0"
+              />
+              <span class="unit">€</span>
+              <span class="error-message" id="error-entretienThermique"></span>
+            </div>
+            <div class="input-group">
+              <label for="assuranceThermique">Coût Assurance Annuel :</label>
+              <input
+                type="number"
+                id="assuranceThermique"
+                value="600"
+                min="0"
+              />
+              <span class="unit">€</span>
+              <span class="error-message" id="error-assuranceThermique"></span>
+            </div>
+            <div class="input-group">
+              <label for="reventeThermique"
+                >Valeur de Revente (fin de période) :</label
+              >
+              <input
+                type="number"
+                id="reventeThermique"
+                value="10000"
+                min="0"
+              />
+              <span class="unit">€</span>
+              <span class="error-message" id="error-reventeThermique"></span>
+            </div>
+          </fieldset>
+
+          <fieldset class="input-group-grid">
+            <legend>
+              <i class="fas fa-bolt"></i> Votre Véhicule Cible (VE / Hybride)
+            </legend>
+            <div class="input-group">
+              <label for="typeVehiculeCible">Type de Véhicule Cible :</label>
+              <select id="typeVehiculeCible">
+                <option value="electrique">Électrique (VE)</option>
+                <option value="hybride">Hybride non rechargeable (HEV)</option>
+                <option value="hybride-rechargeable">
+                  Hybride rechargeable (PHEV)
+                </option>
+              </select>
+            </div>
+            <div class="input-group">
+              <label for="consoVE">Consommation :</label>
+              <input
+                type="number"
+                id="consoVE"
+                value="15.0"
+                step="0.1"
+                min="0.1"
+              />
+              <span class="unit" id="unitVE">kWh/100km</span>
+              <span class="error-message" id="error-consoVE"></span>
+            </div>
+            <div
+              class="input-group"
+              id="group-prixElectricite"
+              style="display: flex"
+            >
+              <label for="prixElectricite">Prix Électricité :</label>
+              <input
+                type="number"
+                id="prixElectricite"
+                value="0.25"
+                step="0.01"
+                min="0.01"
+              />
+              <span class="unit">€/kWh</span>
+              <span class="error-message" id="error-prixElectricite"></span>
+            </div>
+            <div
+              class="input-group"
+              id="group-consoCarburantVE"
+              style="display: none"
+            >
+              <label for="consoCarburantVE"
+                >Conso Carburant (si hybride) :</label
+              >
+              <input
+                type="number"
+                id="consoCarburantVE"
+                value="0"
+                step="0.1"
+                min="0.1"
+              />
+              <span class="unit">L/100km</span>
+              <span class="error-message" id="error-consoCarburantVE"></span>
+            </div>
+            <div
+              class="input-group"
+              id="group-prixCarburantVE"
+              style="display: none"
+            >
+              <label for="prixCarburantVE">Prix Carburant (si hybride) :</label>
+              <input
+                type="number"
+                id="prixCarburantVE"
+                value="0"
+                step="0.01"
+                min="0.01"
+              />
+              <span class="unit">€/L</span>
+              <span class="error-message" id="error-prixCarburantVE"></span>
             </div>
 
             <div class="input-group">
-                <label for="prixAchatVE"><i class="fas fa-hand-holding-usd"></i> Prix d'achat du VE/Hybride :</label>
-                <input type="number" id="prixAchatVE" value="35000" min="0"> €
-                <p class="error-message" id="error-prixAchatVE"></p>
+              <label for="prixAchatVE">Prix d'achat :</label>
+              <input type="number" id="prixAchatVE" value="35000" min="0" />
+              <span class="unit">€</span>
+              <span class="error-message" id="error-prixAchatVE"></span>
             </div>
             <div class="input-group">
-                <label for="entretienVE"><i class="fas fa-wrench"></i> Coût entretien annuel VE/Hybride :</label>
-                <input type="number" id="entretienVE" value="200" min="0"> €
-                <p class="error-message" id="error-entretienVE"></p>
+              <label for="aidesVE">Aides / Subventions :</label>
+              <input type="number" id="aidesVE" value="5000" min="0" />
+              <span class="unit">€</span>
+              <span class="error-message" id="error-aidesVE"></span>
             </div>
             <div class="input-group">
-                <label for="assuranceVE"><i class="fas fa-shield-alt"></i> Coût assurance annuel VE/Hybride :</label>
-                <input type="number" id="assuranceVE" value="700" min="0"> €
-                <p class="error-message" id="error-assuranceVE"></p>
+              <label for="installationBorne"
+                >Coût Installation Borne (si VE) :</label
+              >
+              <input
+                type="number"
+                id="installationBorne"
+                value="1000"
+                min="0"
+              />
+              <span class="unit">€</span>
+              <span class="error-message" id="error-installationBorne"></span>
             </div>
             <div class="input-group">
-                <label for="aidesVE"><i class="fas fa-gift"></i> Aides/Subventions à l'achat VE :</label>
-                <input type="number" id="aidesVE" value="5000" min="0"> €
-                <p class="error-message" id="error-aidesVE"></p>
+              <label for="entretienVE">Coût Entretien Annuel :</label>
+              <input type="number" id="entretienVE" value="300" min="0" />
+              <span class="unit">€</span>
+              <span class="error-message" id="error-entretienVE"></span>
             </div>
             <div class="input-group">
-                <label for="installationBorne"><i class="fas fa-charging-station"></i> Coût installation borne de recharge :</label>
-                <input type="number" id="installationBorne" value="1200" min="0"> €
-                <p class="error-message" id="error-installationBorne"></p>
+              <label for="assuranceVE">Coût Assurance Annuel :</label>
+              <input type="number" id="assuranceVE" value="500" min="0" />
+              <span class="unit">€</span>
+              <span class="error-message" id="error-assuranceVE"></span>
             </div>
             <div class="input-group">
-                <label for="reventeVE"><i class="fas fa-sync-alt"></i> Valeur de revente estimée (après X ans) :</label>
-                <input type="number" id="reventeVE" value="20000" min="0"> €
-                <p class="error-message" id="error-reventeVE"></p>
+              <label for="reventeVE"
+                >Valeur de Revente (fin de période) :</label
+              >
+              <input type="number" id="reventeVE" value="20000" min="0" />
+              <span class="unit">€</span>
+              <span class="error-message" id="error-reventeVE"></span>
             </div>
-            <div class="input-group">
-                <label for="dureePossession"><i class="fas fa-calendar-alt"></i> Durée de possession envisagée :</label>
-                <input type="number" id="dureePossession" value="5" min="1"> années
-                <p class="error-message" id="error-dureePossession"></p>
-            </div>
-        </section>
+          </fieldset>
 
-        <button id="calculateBtn"><i class="fas fa-play"></i> Calculer les économies</button>
-
-        <section class="results-section">
-            <h2><i class="fas fa-chart-bar"></i> Résultats Estimés</h2>
-            <div id="results">
-                <p>Veuillez remplir les champs ci-dessus et cliquer sur "Calculer".</p>
-            </div>
-            <div class="chart-container">
-                <canvas id="tcoChart"></canvas>
-            </div>
-            <div class="monetization-links">
-                <h3><i class="fas fa-dollar-sign"></i> Allez plus loin :</h3>
-                <p>Trouvez l'assurance auto qui vous correspond : <a href="#" target="_blank">Comparez les offres</a></p>
-                <p>Découvrez les derniers modèles VE/Hybrides : <a href="#" target="_blank">Voir les véhicules</a></p>
-                <p>Faites installer votre borne de recharge : <a href="#" target="_blank">Devis gratuit</a></p>
-                <p>Soutenez ce calculateur : <a href="#" target="_blank">Faire un don</a></p>
-            </div>
-        </section>
-
-        <hr> <section class="car-specs-section">
-            <h2><i class="fas fa-car-side"></i> Fiches Techniques des Voitures Populaires</h2>
+          <fieldset class="input-group-grid">
+            <legend>
+              <i class="fas fa-chart-line"></i> Paramètres Communs
+            </legend>
             <div class="input-group">
-                <label for="carSelector">Sélectionnez un modèle :</label>
-                <select id="carSelector">
-                    <option value="">-- Choisissez un modèle --</option>
-                </select>
+              <label for="kmAnnuels">Kilomètres annuels parcourus :</label>
+              <input type="number" id="kmAnnuels" value="15000" min="0" />
+              <span class="unit">km</span>
+              <span class="error-message" id="error-kmAnnuels"></span>
             </div>
-            
-            <div id="carDetails" class="car-details-card">
-                <p>Sélectionnez un véhicule pour voir ses détails.</p>
-                </div>
-        </section>
+            <div class="input-group">
+              <label for="dureePossession"
+                >Durée de possession (années) :</label
+              >
+              <input type="number" id="dureePossession" value="5" min="1" />
+              <span class="unit">ans</span>
+              <span class="error-message" id="error-dureePossession"></span>
+            </div>
+          </fieldset>
+        </div>
 
+        <button id="calculateBtn">
+          <i class="fas fa-calculator"></i> Calculer le TCO
+        </button>
+
+        <div id="results" class="results-section"></div>
+
+        <div class="chart-container">
+          <canvas id="tcoChart"></canvas>
+        </div>
+      </section>
+
+      <section id="carSpecsSection" style="display: none">
+        <h2><i class="fas fa-car"></i> Fiches Techniques des Véhicules</h2>
+        <p>
+          Sélectionnez un modèle pour afficher ses caractéristiques détaillées.
+        </p>
+
+        <div class="input-group car-selector-group">
+          <label for="carSelector">Choisir un modèle :</label>
+          <select id="carSelector">
+            <option value="">-- Choisissez un modèle --</option>
+          </select>
+        </div>
+
+        <div id="carDetailsDisplay" class="car-details-section"></div>
+      </section>
     </main>
 
     <footer>
-        <p>&copy; 2024 - 2025 Votre Site TCO. Toutes les estimations sont à titre indicatif.</p>
-        <p>Monétisation : Liens affiliés vers assurances, constructeurs, bornes de recharge...</p>
+      <p>
+        &copy; 2024 - 2025 Votre Site TCO. Toutes les informations sont à titre
+        indicatif.
+      </p>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="script.js"></script>
-</body>
+  </body>
 </html>

@@ -1,307 +1,178 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // --- Variables Globales pour les éléments du DOM ---
+    const calculatorSection = document.getElementById('calculatorSection');
+    const carSpecsSection = document.getElementById('carSpecsSection');
+    const navLinks = document.querySelectorAll('.main-nav a');
+
+    // Section Calculateur TCO
+    const typeVehiculeThermique = document.getElementById('typeVehiculeThermique');
+    const consoThermique = document.getElementById('consoThermique');
+    const prixCarburant = document.getElementById('prixCarburant');
+    const prixAchatThermique = document.getElementById('prixAchatThermique');
+    const entretienThermique = document.getElementById('entretienThermique');
+    const assuranceThermique = document.getElementById('assuranceThermique');
+    const reventeThermique = document.getElementById('reventeThermique');
+
+    const typeVehiculeCible = document.getElementById('typeVehiculeCible');
+    const consoVE = document.getElementById('consoVE');
+    const prixElectricite = document.getElementById('prixElectricite');
+    const consoCarburantVE = document.getElementById('consoCarburantVE');
+    const prixCarburantVE = document.getElementById('prixCarburantVE');
+    const prixAchatVE = document.getElementById('prixAchatVE');
+    const aidesVE = document.getElementById('aidesVE');
+    const installationBorne = document.getElementById('installationBorne');
+    const entretienVE = document.getElementById('entretienVE');
+    const assuranceVE = document.getElementById('assuranceVE');
+    const reventeVE = document.getElementById('reventeVE');
+
+    const kmAnnuels = document.getElementById('kmAnnuels');
+    const dureePossession = document.getElementById('dureePossession');
     const calculateBtn = document.getElementById('calculateBtn');
     const resultsDiv = document.getElementById('results');
-    const typeVehiculeThermiqueSelect = document.getElementById('typeVehiculeThermique');
-    const consoThermiqueInput = document.getElementById('consoThermique');
-    const prixCarburantInput = document.getElementById('prixCarburant');
-    const unitThermiqueSpan = document.getElementById('unitThermique');
-    const unitPrixCarburantSpan = document.getElementById('unitPrixCarburant');
+    const tcoChartCanvas = document.getElementById('tcoChart');
+    let tcoChart; // Pour stocker l'instance du graphique
 
-    const typeVehiculeCibleSelect = document.getElementById('typeVehiculeCible');
-    const consoVEInput = document.getElementById('consoVE');
-    const unitVESpan = document.getElementById('unitVE');
+    // Groupes d'inputs pour affichage conditionnel
     const groupPrixElectricite = document.getElementById('group-prixElectricite');
-    const prixElectriciteInput = document.getElementById('prixElectricite');
-    const groupPrixCarburantVE = document.getElementById('group-prixCarburantVE');
-    const prixCarburantVEInput = document.getElementById('prixCarburantVE');
     const groupConsoCarburantVE = document.getElementById('group-consoCarburantVE');
-    const consoCarburantVEInput = document.getElementById('consoCarburantVE');
+    const groupPrixCarburantVE = document.getElementById('group-prixCarburantVE');
+    const unitThermique = document.getElementById('unitThermique');
+    const unitPrixCarburant = document.getElementById('unitPrixCarburant');
+    const unitVE = document.getElementById('unitVE');
 
-    let tcoChart = null; // Variable pour stocker l'instance du graphique Chart.js
+    // Section Fiches Techniques
+    const carSelector = document.getElementById('carSelector');
+    const carDetailsDisplay = document.getElementById('carDetailsDisplay');
+    let allCarsData = []; // Pour stocker les données de cars.json
 
-    // --- Fonctions de validation et d'affichage des erreurs ---
-    function showError(elementId, message) {
-        const errorElement = document.getElementById(`error-${elementId}`);
-        if (errorElement) {
-            errorElement.textContent = message;
-            errorElement.classList.add('visible');
-            document.getElementById(elementId).classList.add('input-error'); // Ajoute une classe pour styler le champ en rouge
-        }
-    }
-
-    function hideError(elementId) {
-        const errorElement = document.getElementById(`error-${elementId}`);
-        if (errorElement) {
-            errorElement.textContent = '';
-            errorElement.classList.remove('visible');
-            document.getElementById(elementId).classList.remove('input-error');
-        }
-    }
-
-    function validateInput(elementId, value, min, customMessage = null) {
-        // Valide si c'est un nombre et s'il est supérieur ou égal à 'min'
-        if (isNaN(value) || value < min) {
-            showError(elementId, customMessage || `Veuillez entrer un nombre valide et positif (min ${min}).`);
+    // --- Fonctions de Validation ---
+    function validateInput(inputElement, min, isPositive = false) {
+        const value = parseFloat(inputElement.value);
+        const errorElement = document.getElementById(`error-${inputElement.id}`);
+        if (isNaN(value) || value < min || (isPositive && value <= 0)) {
+            errorElement.textContent = `Veuillez entrer un nombre valide et supérieur à ${min}.`;
+            inputElement.classList.add('input-error');
             return false;
+        } else {
+            errorElement.textContent = '';
+            inputElement.classList.remove('input-error');
+            return true;
         }
-        hideError(elementId);
-        return true;
     }
 
-    function validateAllInputs() {
-        let isValid = true;
+    // --- Fonction de Calcul du TCO ---
+    function calculateTCO() {
+        // Valider toutes les entrées
+        const isValid = [
+            validateInput(consoThermique, 0.1, true),
+            validateInput(prixCarburant, 0.01, true),
+            validateInput(prixAchatThermique, 0),
+            validateInput(entretienThermique, 0),
+            validateInput(assuranceThermique, 0),
+            validateInput(reventeThermique, 0),
 
-        // Liste des champs à valider avec leurs IDs, valeurs minimales et messages d'erreur personnalisés
-        const inputsToValidate = [
-            { id: 'kmAnnuels', min: 0, msg: 'Les kilomètres annuels doivent être un nombre positif.' },
-            { id: 'prixAchatThermique', min: 0, msg: 'Le prix d\'achat thermique doit être un nombre positif.' },
-            { id: 'entretienThermique', min: 0, msg: 'Le coût d\'entretien thermique doit être un nombre positif.' },
-            { id: 'assuranceThermique', min: 0, msg: 'Le coût d\'assurance thermique doit être un nombre positif.' },
-            { id: 'reventeThermique', min: 0, msg: 'La valeur de revente thermique doit être un nombre positif.' },
-            { id: 'prixAchatVE', min: 0, msg: 'Le prix d\'achat VE/Hybride doit être un nombre positif.' },
-            { id: 'entretienVE', min: 0, msg: 'Le coût d\'entretien VE/Hybride doit être un nombre positif.' },
-            { id: 'assuranceVE', min: 0, msg: 'Le coût d\'assurance VE/Hybride doit être un nombre positif.' },
-            { id: 'aidesVE', min: 0, msg: 'Les aides/subventions doivent être un nombre positif.' },
-            { id: 'installationBorne', min: 0, msg: 'Le coût d\'installation de la borne doit être un nombre positif.' },
-            { id: 'reventeVE', min: 0, msg: 'La valeur de revente VE/Hybride doit être un nombre positif.' },
-            { id: 'dureePossession', min: 1, msg: 'La durée de possession doit être au moins de 1 an.' }
-        ];
+            validateInput(consoVE, 0.1, true),
+            validateInput(prixElectricite, 0.01, true),
+            validateInput(prixAchatVE, 0),
+            validateInput(aidesVE, 0),
+            validateInput(installationBorne, 0),
+            validateInput(entretienVE, 0),
+            validateInput(assuranceVE, 0),
+            validateInput(reventeVE, 0),
 
-        // Valider chaque champ dans la liste
-        inputsToValidate.forEach(input => {
-            const value = parseFloat(document.getElementById(input.id).value);
-            if (!validateInput(input.id, value, input.min, input.msg)) {
-                isValid = false;
-            }
-        });
+            validateInput(kmAnnuels, 1, true),
+            validateInput(dureePossession, 1, true)
+        ].every(Boolean); // Vérifie que toutes les validations sont true
 
-        // Validation spécifique pour les consommations et prix en fonction des types de véhicules sélectionnés
-        const currentTypeThermique = typeVehiculeThermiqueSelect.value;
-        const currentTypeCible = typeVehiculeCibleSelect.value;
-
-        // Validation pour le véhicule thermique
-        if (currentTypeThermique === 'essence' || currentTypeThermique === 'diesel') {
-            if (!validateInput('consoThermique', parseFloat(consoThermiqueInput.value), 0.1, 'Consommation thermique invalide (ex: 7.0 L/100km).')) isValid = false;
-            if (!validateInput('prixCarburant', parseFloat(prixCarburantInput.value), 0.01, 'Prix carburant invalide (ex: 1.80 €/L).')) isValid = false;
-        }
-
-        // Validation pour le véhicule cible (VE, Hybride, Hybride Rechargeable)
-        if (currentTypeCible === 'electrique') {
-            if (!validateInput('consoVE', parseFloat(consoVEInput.value), 0.1, 'Consommation électrique invalide (ex: 15.0 kWh/100km).')) isValid = false;
-            if (!validateInput('prixElectricite', parseFloat(prixElectriciteInput.value), 0.01, 'Prix électricité invalide (ex: 0.25 €/kWh).')) isValid = false;
-        } else if (currentTypeCible === 'hybride' || currentTypeCible === 'hybride-rechargeable') {
-            // Pour les hybrides, on attend une consommation électrique/mixte et une consommation carburant.
-            if (!validateInput('consoVE', parseFloat(consoVEInput.value), 0.1, 'Consommation électrique/mixte invalide (ex: 18.0 kWh/100km).')) isValid = false;
-            if (!validateInput('prixElectricite', parseFloat(prixElectriciteInput.value), 0.01, 'Prix électricité invalide (ex: 0.25 €/kWh).')) isValid = false;
-            
-            // Les champs carburant pour hybrides sont obligatoires
-            if (!validateInput('consoCarburantVE', parseFloat(consoCarburantVEInput.value), 0.1, 'Consommation carburant hybride invalide (ex: 5.0 L/100km).')) isValid = false;
-            if (!validateInput('prixCarburantVE', parseFloat(prixCarburantVEInput.value), 0.01, 'Prix carburant hybride invalide (ex: 1.80 €/L).')) isValid = false;
-        }
-
-        return isValid;
-    }
-
-    // --- Logique d'ajustement des champs de consommation et des unités ---
-    function adjustThermiqueInputs() {
-        const type = typeVehiculeThermiqueSelect.value;
-        if (type === 'essence') {
-            unitThermiqueSpan.textContent = 'L/100km';
-            unitPrixCarburantSpan.textContent = '€/L';
-            consoThermiqueInput.value = '7.0'; 
-            prixCarburantInput.value = '1.80';
-            prixCarburantInput.placeholder = 'Prix du carburant en €/L';
-        } else if (type === 'diesel') {
-            unitThermiqueSpan.textContent = 'L/100km';
-            unitPrixCarburantSpan.textContent = '€/L';
-            consoThermiqueInput.value = '6.0';
-            prixCarburantInput.value = '1.70';
-            prixCarburantInput.placeholder = 'Prix du carburant en €/L';
-        }
-        // Pour des types futurs (ex: GPL), on ajouterait d'autres conditions ici.
-    }
-
-    function adjustCibleInputs() {
-        const type = typeVehiculeCibleSelect.value;
-
-        // Cacher tous les champs spécifiques par défaut
-        groupPrixElectricite.style.display = 'none';
-        groupPrixCarburantVE.style.display = 'none';
-        groupConsoCarburantVE.style.display = 'none';
-        // Réinitialiser les valeurs pour éviter des calculs avec des anciennes données cachées
-        prixElectriciteInput.value = '0';
-        prixCarburantVEInput.value = '0';
-        consoCarburantVEInput.value = '0';
-
-
-        if (type === 'electrique') {
-            unitVESpan.textContent = 'kWh/100km';
-            consoVEInput.value = '15.0'; // Conso électrique pure
-            groupPrixElectricite.style.display = 'flex';
-            prixElectriciteInput.value = '0.25';
-            prixElectriciteInput.placeholder = 'Prix de l\'électricité en €/kWh';
-        } else if (type === 'hybride') { // Hybride non rechargeable (HEV)
-            // Pour les HEV, la conso principale est souvent exprimée en L/100km, même s'il y a une petite part électrique.
-            // On peut aussi considérer une conso "mixte" en L/100km et un coût symbolique de l'électricité
-            unitVESpan.textContent = 'L/100km'; 
-            consoVEInput.value = '5.0'; // Conso mixte thermique
-            groupPrixCarburantVE.style.display = 'flex';
-            prixCarburantVEInput.value = '1.80';
-            groupConsoCarburantVE.style.display = 'flex'; // On garde le champ conso carburant visible pour plus de clarté
-            consoCarburantVEInput.value = '5.0'; 
-            groupPrixElectricite.style.display = 'flex'; // La conso électrique est souvent faible mais présente
-            prixElectriciteInput.value = '0.25'; // Prix symbolique ou réel si un peu de recharge
-        } else if (type === 'hybride-rechargeable') { // Hybride rechargeable (PHEV)
-            // Pour les PHEV, on a une conso électrique significative et une conso carburant pour la partie thermique.
-            unitVESpan.textContent = 'kWh/100km'; 
-            consoVEInput.value = '20.0'; // Conso électrique pure
-            groupPrixElectricite.style.display = 'flex';
-            prixElectriciteInput.value = '0.25';
-            groupPrixCarburantVE.style.display = 'flex';
-            prixCarburantVEInput.value = '1.80';
-            groupConsoCarburantVE.style.display = 'flex';
-            consoCarburantVEInput.value = '4.0'; // Conso carburant quand le moteur thermique tourne
-        }
-        // Masquer les erreurs des champs qui pourraient être cachés
-        hideError('prixElectricite');
-        hideError('prixCarburantVE');
-        hideError('consoCarburantVE');
-    }
-
-    // --- Initialisation et Écouteurs d'événements pour le calculateur TCO ---
-    // Ajuster les champs au chargement de la page
-    adjustThermiqueInputs();
-    adjustCibleInputs();
-
-    // Écouter les changements de sélection pour les types de véhicules
-    typeVehiculeThermiqueSelect.addEventListener('change', adjustThermiqueInputs);
-    typeVehiculeCibleSelect.addEventListener('change', adjustCibleInputs);
-
-    // Écouteurs pour masquer les erreurs en temps réel dès que l'utilisateur tape
-    document.querySelectorAll('.input-group input, .input-group select').forEach(input => {
-        input.addEventListener('input', (e) => hideError(e.target.id));
-        input.addEventListener('change', (e) => hideError(e.target.id)); // Aussi pour les selects
-    });
-
-    calculateBtn.addEventListener('click', () => {
-        // Exécuter la validation avant de faire les calculs
-        if (!validateAllInputs()) {
-            resultsDiv.innerHTML = '<p style="color: var(--error-color);">Veuillez corriger les erreurs dans le formulaire pour effectuer le calcul.</p>';
-            if (tcoChart) tcoChart.destroy(); // Détruire le graphique si on ne peut pas calculer
+        if (!isValid) {
+            resultsDiv.innerHTML = `<p class="result-message error-message-text"><i class="fas fa-exclamation-triangle"></i> Veuillez corriger les erreurs dans le formulaire.</p>`;
             return;
         }
 
-        // 1. Récupérer les valeurs des champs d'entrée (après validation réussie)
-        const kmAnnuels = parseFloat(document.getElementById('kmAnnuels').value);
-        const typeVehiculeThermique = typeVehiculeThermiqueSelect.value;
-        const consoThermique = parseFloat(document.getElementById('consoThermique').value);
-        const prixCarburant = parseFloat(document.getElementById('prixCarburant').value);
-        const prixAchatThermique = parseFloat(document.getElementById('prixAchatThermique').value);
-        const entretienThermique = parseFloat(document.getElementById('entretienThermique').value);
-        const assuranceThermique = parseFloat(document.getElementById('assuranceThermique').value); 
-        const reventeThermique = parseFloat(document.getElementById('reventeThermique').value);   
+        const km = parseFloat(kmAnnuels.value);
+        const years = parseFloat(dureePossession.value);
+        const totalKm = km * years;
 
-        const typeVehiculeCible = typeVehiculeCibleSelect.value;
-        const consoVE = parseFloat(document.getElementById('consoVE').value); // Peut être kWh ou L/100km selon le type
-        const prixElectricite = parseFloat(document.getElementById('prixElectricite').value);
-        const prixAchatVE = parseFloat(document.getElementById('prixAchatVE').value);
-        const entretienVE = parseFloat(document.getElementById('entretienVE').value);
-        const assuranceVE = parseFloat(document.getElementById('assuranceVE').value);             
-        const aidesVE = parseFloat(document.getElementById('aidesVE').value);
-        const installationBorne = parseFloat(document.getElementById('installationBorne').value); 
-        const reventeVE = parseFloat(document.getElementById('reventeVE').value);               
-        const dureePossession = parseFloat(document.getElementById('dureePossession').value);
-        
-        // Champs spécifiques aux hybrides (peuvent être 0 si non affichés/pertinents)
-        const prixCarburantVE = parseFloat(document.getElementById('prixCarburantVE').value);
-        const consoCarburantVE = parseFloat(document.getElementById('consoCarburantVE').value);
+        // Coûts du véhicule thermique
+        const prixTh = parseFloat(prixAchatThermique.value);
+        const consoTh = parseFloat(consoThermique.value);
+        const prixCarb = parseFloat(prixCarburant.value);
+        const entretienTh = parseFloat(entretienThermique.value) * years;
+        const assuranceTh = parseFloat(assuranceThermique.value) * years;
+        const reventeTh = parseFloat(reventeThermique.value);
+        const coutCarburantTh = (totalKm / 100) * consoTh * prixCarb;
+        const tcoThermique = prixTh + coutCarburantTh + entretienTh + assuranceTh - reventeTh;
 
+        // Coûts du véhicule cible (VE/Hybride)
+        const prixVE = parseFloat(prixAchatVE.value);
+        const aides = parseFloat(aidesVE.value);
+        const borne = parseFloat(installationBorne.value);
+        const entretienVEVal = parseFloat(entretienVE.value) * years;
+        const assuranceVEVal = parseFloat(assuranceVE.value) * years;
+        const reventeVEVal = parseFloat(reventeVE.value);
 
-        // --- Calcul des coûts ---
-        // Coût carburant/énergie annuel pour véhicule thermique
-        const coutCarburantAnnuelThermique = (kmAnnuels / 100) * consoThermique * prixCarburant;
+        let coutEnergieVE = 0;
+        const typeCible = typeVehiculeCible.value;
 
-        // Coût carburant/énergie annuel pour VE/Hybride (plus complexe car dépend du type)
-        let coutEnergieAnnuelVE = 0; // Coût lié à l'électricité pour le véhicule cible
-        let coutCarburantAnnuelCible = 0; // Coût lié au carburant pour le véhicule cible (pour hybrides)
-        
-        if (typeVehiculeCible === 'electrique') {
-            coutEnergieAnnuelVE = (kmAnnuels / 100) * consoVE * prixElectricite;
-        } else if (typeVehiculeCible === 'hybride') { // Hybride non rechargeable
-            // Pour les HEV, on va utiliser la consoVE comme la conso mixte en L/100km (comme si c'était un thermique)
-            // et une petite part pour l'électricité si le champ est rempli et pertinent.
-            // Simplification : le champ consoVE représente la conso principale (carburant) pour cet hybride.
-            // On peut affiner en introduisant un % d'utilisation électrique.
-            coutCarburantAnnuelCible = (kmAnnuels / 100) * consoVE * prixCarburantVE; 
-            coutEnergieAnnuelVE = (kmAnnuels / 100) * 0.5 * prixElectricite; // Petite part électrique, ajustable
-        } else if (typeVehiculeCible === 'hybride-rechargeable') { // PHEV
-            // Ici on va assumer un mix : une partie en électrique (consoVE kWh/100km) et une partie en thermique (consoCarburantVE L/100km)
-            // Pour une approche plus réaliste, on peut demander l'autonomie électrique et le % d'utilisation quotidien.
-            // Simplification : les deux consommations s'appliquent sur le kilométrage total.
-            coutEnergieAnnuelVE = (kmAnnuels / 100) * consoVE * prixElectricite; // Coût partie électrique
-            coutCarburantAnnuelCible = (kmAnnuels / 100) * consoCarburantVE * prixCarburantVE; // Coût partie thermique
+        if (typeCible === 'electrique') {
+            const consoElec = parseFloat(consoVE.value);
+            const prixElec = parseFloat(prixElectricite.value);
+            coutEnergieVE = (totalKm / 100) * consoElec * prixElec;
+        } else if (typeCible === 'hybride') { // Hybride non rechargeable (HEV)
+            const consoEssenceHybride = parseFloat(consoVE.value); // Reutilise consoVE pour l'essence de l'hybride
+            const prixEssenceHybride = parseFloat(prixElectricite.value); // Reutilise prixElectricite pour le prix de l'essence de l'hybride
+            coutEnergieVE = (totalKm / 100) * consoEssenceHybride * prixEssenceHybride;
+        } else if (typeCible === 'hybride-rechargeable') { // Hybride rechargeable (PHEV)
+            const consoElecPHEV = parseFloat(consoVE.value);
+            const prixElecPHEV = parseFloat(prixElectricite.value);
+            const consoCarbPHEV = parseFloat(consoCarburantVE.value);
+            const prixCarbPHEV = parseFloat(prixCarburantVE.value);
+
+            // Pour un PHEV, on estime une répartition. Simplifié ici à 50/50 ou selon les données disponibles
+            // Une approche plus précise nécessiterait l'autonomie électrique réelle et la fréquence de charge
+            const partElectrique = 0.5; // Exemple: 50% des km parcourus en électrique
+            const partThermique = 0.5; // Exemple: 50% des km parcourus en thermique
+
+            coutEnergieVE = (totalKm * partElectrique / 100) * consoElecPHEV * prixElecPHEV +
+                            (totalKm * partThermique / 100) * consoCarbPHEV * prixCarbPHEV;
         }
 
 
-        // Coût total sur la durée de possession (formule mise à jour)
-        const coutTotalThermique = prixAchatThermique +
-                                   (coutCarburantAnnuelThermique * dureePossession) +
-                                   (entretienThermique * dureePossession) +
-                                   (assuranceThermique * dureePossession) -
-                                   reventeThermique;
+        const tcoCible = prixVE - aides + borne + coutEnergieVE + entretienVEVal + assuranceVEVal - reventeVEVal;
 
-        const coutTotalVE = (prixAchatVE - aidesVE) +
-                            ((coutEnergieAnnuelVE + coutCarburantAnnuelCible) * dureePossession) + // Somme des coûts énergie/carburant annuels
-                            (entretienVE * dureePossession) +
-                            (assuranceVE * dureePossession) +
-                            installationBorne -
-                            reventeVE;
+        const differenceTCO = tcoThermique - tcoCible;
 
-        // Économies réalisées
-        const economiesPotentielles = coutTotalThermique - coutTotalVE;
-        const economiesAnnuelleEnergie = (coutCarburantAnnuelThermique) - (coutEnergieAnnuelVE + coutCarburantAnnuelCible);
-
-        // 4. Afficher les résultats
         resultsDiv.innerHTML = `
-            <h3>Coûts annuels estimés :</h3>
-            <p>Coût carburant annuel pour le <strong>véhicule thermique (${typeVehiculeThermique.toUpperCase()})</strong> : <strong>${coutCarburantAnnuelThermique.toFixed(2)} €</strong></p>
-            <p>Coût énergie annuel pour le <strong>véhicule cible (${typeVehiculeCible.toUpperCase()})</strong> : <strong>${coutEnergieAnnuelVE.toFixed(2)} €</strong> (électricité)</p>
-            ${typeVehiculeCible === 'hybride' || typeVehiculeCible === 'hybride-rechargeable' ? 
-                `<p>Coût carburant annuel (partie thermique) pour le <strong>${typeVehiculeCible === 'hybride' ? 'Hybride' : 'Hybride Rechargeable'}</strong> : <strong>${coutCarburantAnnuelCible.toFixed(2)} €</strong></p>` : ''
-            }
-            <p>Économies annuelles sur l'énergie combinée : <strong>${economiesAnnuelleEnergie.toFixed(2)} €</strong></p>
-            <p>Coût assurance annuel pour le <strong>véhicule thermique</strong> : <strong>${assuranceThermique.toFixed(2)} €</strong></p>
-            <p>Coût assurance annuel pour le <strong>VE/Hybride</strong> : <strong>${assuranceVE.toFixed(2)} €</strong></p>
-
-
-            <h3>Coût Total de Possession (TCO) sur ${dureePossession} ans :</h3>
-            <p>TCO du <strong>véhicule thermique</strong> : <strong>${coutTotalThermique.toFixed(2)} €</strong></p>
-            <p>TCO du <strong>VE/Hybride</strong> (après aides et coûts borne) : <strong>${coutTotalVE.toFixed(2)} €</strong></p>
-            <p>Économies potentielles sur ${dureePossession} ans : <strong style="color: ${economiesPotentielles >= 0 ? 'var(--primary-color)' : 'var(--error-color)'};">${economiesPotentielles.toFixed(2)} €</strong></p>
-            
-            ${economiesPotentielles >= 0 ? 
-                `<p>Félicitations ! Vous pourriez économiser <strong>${economiesPotentielles.toFixed(2)} €</strong> sur ${dureePossession} ans en optant pour le VE/Hybride !</p>` :
-                `<p style="color: var(--error-color);">Dans cette configuration, le véhicule thermique pourrait être plus économique de <strong>${Math.abs(economiesPotentielles).toFixed(2)} €</strong> sur ${dureePossession} ans.</p>`
+            <p class="result-message success-message"><i class="fas fa-check-circle"></i> Calcul effectué avec succès !</p>
+            <h3>Synthèse du Coût Total de Possession (sur ${years} ans)</h3>
+            <p><strong>Coût Total Véhicule Thermique :</strong> <span class="result-value">${tcoThermique.toFixed(2)} €</span></p>
+            <p><strong>Coût Total Véhicule Cible (${typeCible === 'electrique' ? 'Électrique' : (typeCible === 'hybride' ? 'Hybride' : 'Hybride Rechargeable')}):</strong> <span class="result-value">${tcoCible.toFixed(2)} €</span></p>
+            ${differenceTCO > 0 ?
+                `<p class="result-message success-message"><i class="fas fa-hand-holding-usd"></i> En passant au véhicule cible, vous économiseriez environ <span class="result-value">${differenceTCO.toFixed(2)} €</span> sur ${years} ans !</p>` :
+                `<p class="result-message error-message-text"><i class="fas fa-exclamation-triangle"></i> Le véhicule cible coûte environ <span class="result-value">${Math.abs(differenceTCO).toFixed(2)} €</span> de plus sur ${years} ans.</p>`
             }
         `;
 
-        // --- Mise à jour du graphique Chart.js ---
-        const ctx = document.getElementById('tcoChart').getContext('2d');
+        updateChart(tcoThermique, tcoCible);
+    }
 
+    // --- Fonction de mise à jour du graphique ---
+    function updateChart(tcoThermique, tcoCible) {
         if (tcoChart) {
-            tcoChart.destroy(); // Détruire l'instance précédente du graphique si elle existe
+            tcoChart.destroy(); // Détruire l'ancienne instance si elle existe
         }
 
+        const ctx = tcoChartCanvas.getContext('2d');
         tcoChart = new Chart(ctx, {
-            type: 'bar', 
+            type: 'bar',
             data: {
-                labels: [`Véhicule Thermique (${typeVehiculeThermique.toUpperCase()})`, `Véhicule Cible (${typeVehiculeCible.toUpperCase()})`],
+                labels: ['Véhicule Thermique', 'Véhicule Cible'],
                 datasets: [{
-                    label: 'Coût Total de Possession sur ' + dureePossession + ' ans (€)',
-                    data: [coutTotalThermique, coutTotalVE],
+                    label: 'Coût Total de Possession (€)',
+                    data: [tcoThermique, tcoCible],
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.7)', // Rouge pour thermique
-                        'rgba(75, 192, 192, 0.7)'  // Vert pour VE/Hybride
+                        'rgba(75, 192, 192, 0.7)'  // Vert/Bleu pour cible
                     ],
                     borderColor: [
                         'rgba(255, 99, 132, 1)',
@@ -312,24 +183,19 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             options: {
                 responsive: true,
-                maintainAspectRatio: true, 
+                maintainAspectRatio: false,
                 scales: {
                     y: {
                         beginAtZero: true,
                         title: {
                             display: true,
-                            text: 'Coût Total (€)'
+                            text: 'Coût (€)'
                         }
                     }
                 },
                 plugins: {
                     legend: {
-                        display: true,
-                        position: 'top',
-                    },
-                    title: {
-                        display: true,
-                        text: 'Comparaison des Coûts Totaux de Possession'
+                        display: false // Cache la légende car les labels sont clairs
                     },
                     tooltip: {
                         callbacks: {
@@ -348,57 +214,177 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
         });
-    });
+    }
 
-// ... (votre code JavaScript existant pour le calculateur TCO et les fonctions de validation) ...
+    // --- Gestion de l'affichage conditionnel des champs pour le véhicule cible ---
+    function updateTargetVehicleInputs() {
+        const type = typeVehiculeCible.value;
 
-    // --- NOUVEAU CODE POUR LES FICHES TECHNIQUES ---
-    const carSelector = document.getElementById('carSelector');
-    // const carDetailsDiv = document.getElementById('carDetails'); // Cette div ne sera plus utilisée pour afficher les détails
+        // Réinitialiser les affichages
+        groupPrixElectricite.style.display = 'none';
+        groupConsoCarburantVE.style.display = 'none';
+        groupPrixCarburantVE.style.display = 'none';
+        unitVE.textContent = ''; // Réinitialiser l'unité
 
-    let carsData = []; // Pour stocker les données des voitures
+        // Cacher les messages d'erreur des champs concernés
+        document.getElementById('error-consoVE').textContent = '';
+        document.getElementById('error-prixElectricite').textContent = '';
+        document.getElementById('error-consoCarburantVE').textContent = '';
+        document.getElementById('error-prixCarburantVE').textContent = '';
 
-    // Fonction pour charger les données des voitures
-    async function loadCarsData() {
-        try {
-            const response = await fetch('data/cars.json'); 
-            if (!response.ok) {
-                throw new Error(`Erreur de chargement des données : ${response.statusText}`);
-            }
-            carsData = await response.json();
-            populateCarSelector();
-        } catch (error) {
-            console.error('Erreur lors du chargement des données des voitures :', error);
-            // carDetailsDiv.innerHTML = '<p style="color: red;">Impossible de charger les fiches techniques pour le moment.</p>'; // Plus nécessaire
+        if (type === 'electrique') {
+            groupPrixElectricite.style.display = 'flex';
+            unitVE.textContent = 'kWh/100km';
+            consoVE.value = 15.0;
+            prixElectricite.value = 0.25;
+        } else if (type === 'hybride') { // Hybride non rechargeable
+            groupPrixElectricite.style.display = 'flex'; // Utilise le même champ que prixElectricite pour le prix du carburant
+            unitVE.textContent = 'L/100km'; // La conso est en L/100km pour les hybrides non rechargeables
+            consoVE.value = 5.0;
+            prixElectricite.value = 1.80; // Prix de l'essence
+        } else if (type === 'hybride-rechargeable') {
+            groupPrixElectricite.style.display = 'flex'; // Prix Electricité pour la partie électrique
+            groupConsoCarburantVE.style.display = 'flex'; // Conso Carburant pour la partie thermique
+            groupPrixCarburantVE.style.display = 'flex'; // Prix Carburant pour la partie thermique
+            unitVE.textContent = 'kWh/100km'; // La conso principale reste kWh/100km
+            consoVE.value = 20.0; // Conso électrique
+            prixElectricite.value = 0.25;
+            consoCarburantVE.value = 3.0; // Conso carburant
+            prixCarburantVE.value = 1.80;
         }
     }
 
-    // Fonction pour populer le sélecteur déroulant
-    function populateCarSelector() {
-        carSelector.innerHTML = '<option value="">-- Choisissez un modèle --</option>'; 
-        carsData.forEach(car => {
-            const option = document.createElement('option');
-            option.value = `pages/cars/${car.id}.html`; // Lien direct vers la page générée
-            option.textContent = `${car.marque} ${car.modele} (${car.annee}) - ${car.type}`;
-            carSelector.appendChild(option);
+    // --- Gestion de l'unité de consommation thermique ---
+    function updateThermiqueUnit() {
+        const type = typeVehiculeThermique.value;
+        if (type === 'essence' || type === 'diesel') {
+            unitThermique.textContent = 'L/100km';
+            unitPrixCarburant.textContent = '€/L';
+        }
+    }
+
+    // --- Logique de navigation entre sections ---
+    function showSection(sectionId) {
+        navLinks.forEach(link => {
+            const section = document.getElementById(link.dataset.section);
+            if (link.dataset.section === sectionId) {
+                link.classList.add('active-link');
+                // S'assurer que la section est visible
+                section.style.display = 'block';
+            } else {
+                link.classList.remove('active-link');
+                section.classList.remove('active'); // Retirer la classe active
+                section.style.display = 'none'; // Cacher les autres sections
+            }
         });
     }
 
-    // Fonction pour rediriger vers la page de la voiture sélectionnée
-    // Cette fonction remplace l'ancienne 'displayCarDetails'
-    function redirectToCarPage(url) {
-        if (url) {
-            window.location.href = url; // Redirige le navigateur
+    // --- Chargement des données des voitures et remplissage du sélecteur ---
+    async function loadCarData() {
+        try {
+            // Le chemin vers cars.json est relatif à index.html
+            const response = await fetch('data/cars.json');
+            if (!response.ok) {
+                throw new Error(`Erreur HTTP ! Statut: ${response.status}`);
+            }
+            allCarsData = await response.json();
+
+            // Vérifier que allCarsData est un tableau et contient des éléments
+            if (Array.isArray(allCarsData) && allCarsData.length > 0) {
+                populateCarSelector(); // Appel crucial
+            } else {
+                carDetailsDisplay.innerHTML = `<p class="result-message error-message-text"><i class="fas fa-exclamation-triangle"></i> Aucune donnée de véhicule trouvée dans data/cars.json ou le format est incorrect.</p>`;
+            }
+
+        } catch (error) {
+            console.error('Erreur lors du chargement des données des voitures :', error);
+            carDetailsDisplay.innerHTML = `<p class="result-message error-message-text"><i class="fas fa-exclamation-triangle"></i> Impossible de charger la liste des véhicules. Vérifiez le fichier data/cars.json et les droits d'accès.</p>`;
         }
     }
 
-    // Écouteur pour le sélecteur de voiture
-    carSelector.addEventListener('change', (event) => {
-        redirectToCarPage(event.target.value);
+    function populateCarSelector() {
+        if (!carSelector) {
+            console.error('Erreur: carSelector est null. Impossible de populer la liste déroulante.');
+            return; // Arrêter la fonction si l'élément n'est pas trouvé
+        }
+
+        carSelector.innerHTML = '<option value="">-- Choisissez un modèle --</option>'; // Réinitialise et ajoute l'option par défaut
+
+        if (allCarsData && Array.isArray(allCarsData) && allCarsData.length > 0) {
+            allCarsData.forEach(car => {
+                // Vérifier la structure de chaque objet voiture
+                if (car.id && car.marque && car.modele && car.annee) {
+                    const option = document.createElement('option');
+                    option.value = car.id; // L'ID du véhicule
+                    option.textContent = `${car.marque} ${car.modele} (${car.annee})`;
+                    carSelector.appendChild(option);
+                } else {
+                    console.warn('Objet voiture mal formé dans cars.json (manque id, marque, modele ou annee) :', car);
+                }
+            });
+        }
+    }
+
+    // --- Écouteurs d'événements ---
+
+    // Navigation principale
+    navLinks.forEach(link => {
+        link.addEventListener('click', (event) => {
+            event.preventDefault(); // Empêche le rechargement de la page
+            const targetSectionId = link.dataset.section;
+            
+            showSection(targetSectionId); // Affiche la section correspondante
+
+            // Si on va sur la section des fiches techniques, charger les données
+            if (targetSectionId === 'carSpecsSection') {
+                // Ne charger les données que si elles ne l'ont pas déjà été
+                if (allCarsData.length === 0) {
+                    loadCarData();
+                } else {
+                    // Si les données sont déjà là, s'assurer que le sélecteur est bien peuplé
+                    populateCarSelector(); 
+                }
+                // Réinitialiser la sélection et l'affichage des détails quand on arrive sur cette section
+                carSelector.value = '';
+                carDetailsDisplay.innerHTML = '';
+            }
+            // Quand on revient sur le calculateur, on peut aussi réinitialiser
+            if (targetSectionId === 'calculatorSection') {
+                carSelector.value = '';
+                carDetailsDisplay.innerHTML = '';
+                resultsDiv.innerHTML = ''; // Nettoyer les résultats du calculateur
+                if (tcoChart) {
+                    tcoChart.destroy(); // Détruire le graphique si on quitte la section
+                }
+            }
+        });
     });
 
-    // Charger les données des voitures au démarrage
-    loadCarsData();
+    // Calculateur TCO
+    calculateBtn.addEventListener('click', calculateTCO);
+    typeVehiculeCible.addEventListener('change', updateTargetVehicleInputs);
+    typeVehiculeThermique.addEventListener('change', updateThermiqueUnit);
 
-// ... (le reste de votre code JavaScript existant pour le calculateur TCO) ...
+    // Fiches Techniques : Gérer la sélection et la redirection
+    carSelector.addEventListener('change', (event) => {
+        const selectedCarId = event.target.value;
+        if (selectedCarId) {
+            // Redirige l'utilisateur vers la page HTML générée pour cette voiture
+            // Le chemin est relatif à index.html
+            window.location.href = `pages/cars/${selectedCarId}.html`;
+        } else {
+            // Si l'option "-- Choisissez un modèle --" est sélectionnée, vider l'affichage
+            carDetailsDisplay.innerHTML = '';
+        }
+    });
+
+    // --- Initialisation au chargement de la page ---
+    updateTargetVehicleInputs(); // Initialiser les champs du véhicule cible
+    updateThermiqueUnit(); // Initialiser l'unité thermique
+
+    // Initialiser l'affichage des sections.
+    // S'assurer que le calculateur est visible au démarrage et les fiches techniques masquées.
+    calculatorSection.style.display = 'block';
+    carSpecsSection.style.display = 'none';
+    showSection('calculatorSection'); // Afficher la section "Calculateur TCO" par défaut
 });

@@ -5,18 +5,23 @@
     "modele": "Model 3",
     "annee": "2024",
     "type": "Électrique",
-    "autonomie_wlpt": "513 km",
+    "motorisation": "Propulsion",
+    "autonomie_electrique_wlpt": "513 km",
     "batterie_utile": "60 kWh",
-    "puissance_max": "283 ch",
-    "0_100kmh": "6.1 s",
+    "puissance_totale": "283 ch",
+    "0_100kmh": "6.1s",
     "conso_mixte_wlpt": "13.2 kWh/100km",
+    "emissions_co2": "0 g/km",
     "charge_ac_max": "11 kW",
-    "charge_dc_max": "250 kW",
+    "charge_dc_max": "170 kW",
     "prix_a_partir": "42990 €",
-    "image": "images/tesla-model3-2024.jpg",
-    "description_courte": "La berline électrique la plus vendue, offrant une grande autonomie et des performances impressionnantes.",
-    "avantages": ["Autonomie", "Réseau de recharge Supercharger", "Technologie embarquée"],
-    "inconvenients": ["Intérieur minimaliste", "Dépendance à l'écran central"]
+    "image": "images/tesla-model3.jpg",
+    "description_courte": "La version restylée de la berline électrique de référence, avec un design affiné et plus de raffinement.",
+    "avantages": ["Autonomie", "Technologie", "Réseau de Superchargeurs"],
+    "inconvenients": [
+      "Minimalisme de l'intérieur",
+      "Absence de compteurs derrière le volant"
+    ]
   },
   {
     "id": "renault-clio-e-tech-2024",
@@ -29,9 +34,13 @@
     "conso_mixte_wlpt": "4.2 L/100km",
     "emissions_co2": "96 g/km",
     "prix_a_partir": "24900 €",
-    "image": "images/renault-clio-e-tech.jpg",
+    "image": "images/clio.jpg",
     "description_courte": "Une citadine polyvalente et économique, idéale pour la ville et les trajets mixtes.",
-    "avantages": ["Faible consommation", "Conduite douce en ville", "Design compact"],
+    "avantages": [
+      "Faible consommation",
+      "Conduite douce en ville",
+      "Design compact"
+    ],
     "inconvenients": ["Autonomie électrique limitée", "Coffre réduit"]
   },
   {
@@ -48,9 +57,45 @@
     "emissions_co2": "29 g/km",
     "charge_ac_max": "7.4 kW",
     "prix_a_partir": "45000 €",
-    "image": "images/peugeot-3008-phev.jpg",
+    "image": "images/3008.jpg",
     "description_courte": "Un SUV familial spacieux et confortable, avec la polyvalence de l'hybride rechargeable.",
-    "avantages": ["Confort", "Finition intérieure", "Autonomie électrique suffisante pour le quotidien"],
-    "inconvenients": ["Prix élevé", "Poids important", "Consommation thermique sur longs trajets si batterie vide"]
+    "avantages": [
+      "Confort",
+      "Finition intérieure",
+      "Autonomie électrique suffisante pour le quotidien"
+    ],
+    "inconvenients": [
+      "Prix élevé",
+      "Poids important",
+      "Consommation thermique sur longs trajets si batterie vide"
+    ]
+  },
+  {
+    "id": "mg3-hybrid-plus-2024",
+    "marque": "MG",
+    "modele": "3 Hybrid+",
+    "annee": "2024",
+    "type": "Hybride (non rechargeable)",
+    "motorisation": "1.5L VTi Hybrid+ (194 ch)",
+    "autonomie_electrique_wlpt": "N/A (hybride non rechargeable)",
+    "batterie_utile": "1.83 kWh",
+    "puissance_totale": "194 ch",
+    "conso_mixte_wlpt": "4.4 L/100km",
+    "emissions_co2": "100 g/km",
+    "charge_ac_max": "N/A (hybride non rechargeable)",
+    "prix_a_partir": "20000 €",
+    "image": "images/mg3.jpg",
+    "description_courte": "Une citadine hybride abordable et performante, offrant une consommation maîtrisée et un bon niveau d'équipement.",
+    "avantages": [
+      "Prix très compétitif",
+      "Puissance élevée pour la catégorie",
+      "Consommation de carburant réduite en ville",
+      "Bonne garantie (7 ans)"
+    ],
+    "inconvenients": [
+      "Volume de coffre limité",
+      "Confort de suspension ferme à basse vitesse",
+      "Finition intérieure en deçà de certains concurrents"
+    ]
   }
 ]
