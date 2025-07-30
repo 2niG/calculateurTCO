@@ -1,162 +1,194 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{car_marque}} {{car_modele}} ({{car_annee}}) - Fiche Technique Complète</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      {{car_marque}} {{car_modele}} ({{car_annee}}) - Fiche Technique Complète
+    </title>
+    <link rel="icon" href="../../images/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="../../style.css">
     <style>
-        /* Styles spécifiques pour la page de fiche technique si nécessaire */
-        .car-full-details {
-            max-width: 800px;
-            margin: 2rem auto;
-            background: #fff;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-        }
-        .car-full-details img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-            margin-bottom: 1.5rem;
-        }
-        .car-full-details h1 {
-            color: var(--secondary-color);
-            margin-top: 0;
-            margin-bottom: 1rem;
-            text-align: center;
-        }
-        .car-full-details h2 {
-            color: var(--primary-color);
-            border-bottom: 1px dashed var(--border-color);
-            padding-bottom: 0.5rem;
-            margin-top: 1.5rem;
-            margin-bottom: 1rem;
-        }
-        .car-full-details p, .car-full-details li {
-            font-size: 1.05rem;
-            line-height: 1.8;
-            margin-bottom: 0.7rem;
-        }
-        .car-full-details ul {
-            list-style: none;
-            padding: 0;
-            margin-bottom: 1.5rem;
-        }
-        .car-full-details ul li {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 0.8rem;
-        }
-        .car-full-details ul li .fas {
-            color: var(--secondary-color);
-            min-width: 20px; /* Assure un alignement pour les icônes */
-        }
-        .car-full-details .advantages-list li .fas.fa-check-circle { color: #28a745; }
-        .car-full-details .disadvantages-list li .fas.fa-times-circle { color: #dc3545; }
-        .back-link {
-            display: block;
-            text-align: center;
-            margin-top: 2rem;
-            font-size: 1.1rem;
-            color: var(--primary-color);
-            text-decoration: none;
-        }
-        .back-link:hover {
-            text-decoration: underline;
-        }
+      /* Styles spécifiques pour la page de fiche technique si nécessaire */
+      .car-full-details {
+        max-width: 800px;
+        margin: 2rem auto;
+        background: #fff;
+        padding: 2rem;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      }
+      .car-full-details img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        margin-bottom: 1.5rem;
+      }
+      .car-full-details h1 {
+        color: var(--secondary-color);
+        margin-top: 0;
+        margin-bottom: 1rem;
+        text-align: center;
+      }
+      .car-full-details h2 {
+        color: var(--primary-color);
+        border-bottom: 1px dashed var(--border-color);
+        padding-bottom: 0.5rem;
+        margin-top: 1.5rem;
+        margin-bottom: 1rem;
+      }
+      .car-full-details p,
+      .car-full-details li {
+        font-size: 1.05rem;
+        line-height: 1.8;
+        margin-bottom: 0.7rem;
+      }
+      .car-full-details ul {
+        list-style: none;
+        padding: 0;
+        margin-bottom: 1.5rem;
+      }
+      .car-full-details ul li {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 0.8rem;
+      }
+      .car-full-details ul li .fas {
+        color: var(--secondary-color);
+        min-width: 20px; /* Assure un alignement pour les icônes */
+      }
+      .car-full-details .advantages-list li .fas.fa-check-circle {
+        color: #28a745;
+      }
+      .car-full-details .disadvantages-list li .fas.fa-times-circle {
+        color: #dc3545;
+      }
+      .back-link {
+        display: block;
+        text-align: center;
+        margin-top: 2rem;
+        font-size: 1.1rem;
+        color: var(--primary-color);
+        text-decoration: none;
+      }
+      .back-link:hover {
+        text-decoration: underline;
+      }
 
-        /* Styles de la section "Allez plus loin" */
-        .monetization-links-car {
-            margin-top: 2.5rem;
-            border-top: 1px dashed var(--border-color);
-            padding-top: 2rem;
-            text-align: center;
-        }
+      /* Styles de la section "Allez plus loin" */
+      .monetization-links-car {
+        margin-top: 2.5rem;
+        border-top: 1px dashed var(--border-color);
+        padding-top: 2rem;
+        text-align: center;
+      }
 
-        .monetization-links-car h3 {
-            color: var(--secondary-color);
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
+      .monetization-links-car h3 {
+        color: var(--secondary-color);
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+      }
 
-        .monetization-links-car a {
-            display: block;
-            background: var(--secondary-color);
-            color: white;
-            padding: 0.8rem 1.5rem;
-            margin: 0.8rem auto;
-            border-radius: 5px;
-            text-decoration: none;
-            transition: background 0.3s ease;
-            max-width: 350px;
-        }
+      .monetization-links-car a {
+        display: block;
+        background: var(--secondary-color);
+        color: white;
+        padding: 0.8rem 1.5rem;
+        margin: 0.8rem auto;
+        border-radius: 5px;
+        text-decoration: none;
+        transition: background 0.3s ease;
+        max-width: 350px;
+      }
 
-        .monetization-links-car a:hover {
-            background: #303f9f;
-        }
+      .monetization-links-car a:hover {
+        background: #303f9f;
+      }
     </style>
-</head>
-<body>
-    <header>
-        <h1><i class="fas fa-car-side"></i> Fiche Technique Détaillée</h1>
-        <p>Découvrez tous les détails de la {{car_marque}} {{car_modele}}.</p>
+  </head>
+  <body>
+    <header class="car-page-header">
+      <div class="header-logo-container">
+        <a href="../../index.html">
+          <img
+            src="../../images/logo.jpg"
+            alt="Votre Logo"
+            class="header-logo"
+          />
+        </a>
+        <div class="header-text-content">
+          <h1>Fiche Technique Détaillée</h1>
+          <p>Découvrez tous les détails de la {{car_marque}} {{car_modele}}.</p>
+        </div>
+      </div>
     </header>
 
     <main>
-        <div class="car-full-details">
-            <a href="../../index.html" class="back-link"><i class="fas fa-arrow-left"></i> Retour au calculateur et à la liste des fiches</a>
-            
-            <img src="../../{{car_image}}" alt="{{car_marque}} {{car_modele}}">
-            
-            <h1>{{car_marque}} {{car_modele}} ({{car_annee}})</h1>
-            <p><strong>Type :</strong> {{car_type}}</p>
-            <p>{{car_description_courte}}</p>
+      <div class="car-full-details">
+        <a href="../../index.html" class="back-link"
+          ><i class="fas fa-arrow-left"></i> Retour au calculateur et à la liste
+          des fiches</a
+        >
 
-            <h2><i class="fas fa-info-circle"></i> Caractéristiques Clés</h2>
-            <ul>
-                {{car_autonomie_wlpt_html}}
-                {{car_batterie_utile_html}}
-                {{car_autonomie_electrique_wlpt_html}}
-                <li><i class="fas fa-horse-head"></i> Puissance : <strong>{{car_puissance_max}}{{car_puissance_totale}}</strong></li>
-                {{car_0_100kmh_html}}
-                <li><i class="fas fa-leaf"></i> Conso Mixte WLTP : <strong>{{car_conso_mixte_wlpt}}</strong></li>
-                {{car_emissions_co2_html}}
-                {{car_charge_ac_max_html}}
-                {{car_charge_dc_max_html}}
-                <li><i class="fas fa-tag"></i> Prix à partir de : <strong>{{car_prix_a_partir}}</strong></li>
-                {{car_motorisation_html}}
-            </ul>
+        <img src="../../{{car_image}}" alt="{{car_marque}} {{car_modele}}" />
 
-            <h2><i class="fas fa-thumbs-up"></i> Avantages</h2>
-            <ul class="advantages-list">
-                {{car_advantages_html}}
-            </ul>
+        <h1>{{car_marque}} {{car_modele}} ({{car_annee}})</h1>
+        <p><strong>Type :</strong> {{car_type}}</p>
+        <p>{{car_description_courte}}</p>
 
-            <h2><i class="fas fa-thumbs-down"></i> Inconvénients</h2>
-            <ul class="disadvantages-list">
-                {{car_disadvantages_html}}
-            </ul>
+        <h2><i class="fas fa-info-circle"></i> Caractéristiques Clés</h2>
+        <ul>
+          {{car_autonomie_wlpt_html}} {{car_batterie_utile_html}}
+          {{car_autonomie_electrique_wlpt_html}}
+          <li>
+            <i class="fas fa-horse-head"></i> Puissance :
+            <strong>{{car_puissance_max}}{{car_puissance_totale}}</strong>
+          </li>
+          {{car_0_100kmh_html}}
+          <li>
+            <i class="fas fa-leaf"></i> Conso Mixte WLTP :
+            <strong>{{car_conso_mixte_wlpt}}</strong>
+          </li>
+          {{car_emissions_co2_html}} {{car_charge_ac_max_html}}
+          {{car_charge_dc_max_html}}
+          <li>
+            <i class="fas fa-tag"></i> Prix à partir de :
+            <strong>{{car_prix_a_partir}}</strong>
+          </li>
+          {{car_motorisation_html}}
+        </ul>
 
-            <div class="monetization-links-car">
-                <h3><i class="fas fa-dollar-sign"></i> Envie d'aller plus loin ?</h3>
-                <p>Intéressé(e) par la {{car_modele}} ?</p>
-                <a href="#" target="_blank">Demandez un essai gratuit</a>
-                <a href="#" target="_blank">Configurez votre {{car_modele}}</a>
-                <a href="#" target="_blank">Trouvez une {{car_modele}} d'occasion</a>
-                <a href="#" target="_blank">Comparez les assurances pour ce modèle</a>
-            </div>
+        <h2><i class="fas fa-thumbs-up"></i> Avantages</h2>
+        <ul class="advantages-list">
+          {{car_advantages_html}}
+        </ul>
+
+        <h2><i class="fas fa-thumbs-down"></i> Inconvénients</h2>
+        <ul class="disadvantages-list">
+          {{car_disadvantages_html}}
+        </ul>
+
+        <div class="monetization-links-car">
+          <h3><i class="fas fa-dollar-sign"></i> Envie d'aller plus loin ?</h3>
+          <p>Intéressé(e) par la {{car_modele}} ?</p>
+          <a href="#" target="_blank">Demandez un essai gratuit</a>
+          <a href="#" target="_blank">Configurez votre {{car_modele}}</a>
+          <a href="#" target="_blank">Trouvez une {{car_modele}} d'occasion</a>
+          <a href="#" target="_blank">Comparez les assurances pour ce modèle</a>
         </div>
+      </div>
     </main>
 
     <footer>
-        <p>&copy; 2024 - 2025 Votre Site TCO. Toutes les informations sont à titre indicatif.</p>
+      <p>
+        &copy; 2024 - 2025 Votre Site TCO. Toutes les informations sont à titre
+        indicatif.
+      </p>
     </footer>
-</body>
+  </body>
 </html>

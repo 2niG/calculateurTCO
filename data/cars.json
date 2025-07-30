@@ -115,34 +115,66 @@
     ]
   },
   {
-  "id": "seat-leon-v-1-5-etsi-150-2024",
-  "marque": "Seat",
-  "modele": "Leon V 1.5 eTSI",
-  "annee": "2024",
-  "type": "Hybride léger (mild-hybrid)",
-  "motorisation": "1.5 eTSI 150 ch DSG7",
-  "autonomie_electrique_wlpt": "N/A (hybride léger)",
-  "batterie_utile": "0.3 kWh (environ, pour système 48V)",
-  "puissance_totale": "150 ch",
-  "0_100kmh": "8.4s",
-  "conso_mixte_wlpt": "5.6 L/100km",
-  "emissions_co2": "128 g/km",
-  "charge_ac_max": "N/A (hybride léger)",
-  "charge_dc_max": "N/A (hybride léger)",
-  "prix_a_partir": "30000 €",
-  "image": "images/leon-V-etsi.jpg",
-  "description_courte": "Une berline compacte au design dynamique, offrant un bon équilibre entre performances et consommation grâce à sa technologie hybride légère.",
-  "avantages": [
-    "Bonne réactivité du moteur",
-    "Consommation maîtrisée pour la puissance",
-    "Boîte DSG7 fluide",
-    "Design attrayant",
-    "Confort de suspension"
-  ],
-  "inconvenients": [
-    "Système hybride peu perceptible en conduite (pas de roulage 100% électrique significatif)",
-    "Certains plastiques intérieurs",
-    "Options qui peuvent faire monter le prix"
-  ]
-}
+    "id": "seat-leon-v-1-5-etsi-150-2024",
+    "marque": "Seat",
+    "modele": "Leon V 1.5 eTSI",
+    "annee": "2024",
+    "type": "Hybride léger (mild-hybrid)",
+    "motorisation": "1.5 eTSI 150 ch DSG7",
+    "autonomie_electrique_wlpt": "N/A (hybride léger)",
+    "batterie_utile": "0.3 kWh (environ, pour système 48V)",
+    "puissance_totale": "150 ch",
+    "0_100kmh": "8.4s",
+    "conso_mixte_wlpt": "5.6 L/100km",
+    "emissions_co2": "128 g/km",
+    "charge_ac_max": "N/A (hybride léger)",
+    "charge_dc_max": "N/A (hybride léger)",
+    "prix_a_partir": "30000 €",
+    "image": "images/leon-V-etsi.jpg",
+    "description_courte": "Une berline compacte au design dynamique, offrant un bon équilibre entre performances et consommation grâce à sa technologie hybride légère.",
+    "avantages": [
+      "Bonne réactivité du moteur",
+      "Consommation maîtrisée pour la puissance",
+      "Boîte DSG7 fluide",
+      "Design attrayant",
+      "Confort de suspension"
+    ],
+    "inconvenients": [
+      "Système hybride peu perceptible en conduite (pas de roulage 100% électrique significatif)",
+      "Certains plastiques intérieurs",
+      "Options qui peuvent faire monter le prix"
+    ]
+  },
+  {
+    "id": "seat-ibiza-1-0-tsi-110-dsg7",
+    "marque": "Seat",
+    "modele": "Ibiza",
+    "annee": "2024",
+    "type": "Thermique (Essence)",
+    "motorisation": "1.0 TSI 110 ch DSG7",
+    "autonomie_electrique_wlpt": "N/A",
+    "batterie_utile": "N/A",
+    "puissance_totale": "110 ch",
+    "0_100kmh": "10.0s",
+    "conso_mixte_wlpt": "5.4 L/100km",
+    "emissions_co2": "123 g/km",
+    "charge_ac_max": "N/A",
+    "charge_dc_max": "N/A",
+    "prix_a_partir": "23000 €",
+    "image": "images/Ibiza110.jpg",
+    "description_courte": "La citadine polyvalente de Seat, reconnue pour son dynamisme et son agilité. Le moteur 1.0 TSI offre un bon compromis entre performances et efficience pour le quotidien.",
+    "avantages": [
+      "Moteur 110 ch volontaire et économe",
+      "Boîte DSG7 fluide et réactive",
+      "Comportement routier dynamique et agile",
+      "Habitabilité correcte pour la catégorie",
+      "Design moderne et distinctif"
+    ],
+    "inconvenients": [
+      "Qualité de certains matériaux intérieurs (plastiques durs)",
+      "Insonorisation perfectible à haute vitesse",
+      "Suspension ferme sur chaussée dégradée",
+      "Peu de nouveautés majeures par rapport aux générations précédentes"
+    ]
+  }
 ]

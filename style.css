@@ -1,570 +1,212 @@
 /* Variables CSS pour les couleurs */
 :root {
-  --primary-color: #1abc9c; /* Un vert turquoise frais pour l'action et les succès */
-  --secondary-color: #2c3e50; /* Un bleu foncé élégant pour les titres et le header */
-  --accent-color: #3498db; /* Un bleu plus vif pour les liens et les éléments interactifs */
-  --text-color: #333;
-  --light-text-color: #ecf0f1; /* Pour le texte sur fond sombre */
-  --bg-color: #f4f7f6; /* Un fond légèrement plus chaud que le gris pur */
-  --card-bg: #fff;
-  --border-color: #e0e0e0; /* Un gris clair pour les bordures */
-  --error-color: #e74c3c; /* Un rouge plus doux pour les erreurs */
-  --hover-darken: 10%; /* Pour assombrir au survol */
+    --primary-color: #1abc9c; /* Un vert turquoise frais pour l'action et les succès */
+    --secondary-color: #2c3e50; /* Un bleu foncé élégant pour les titres et le header */
+    --accent-color: #3498db; /* Un bleu plus vif pour les liens et les éléments interactifs */
+    --text-color: #333;
+    --light-text-color: #ecf0f1; /* Pour le texte sur fond sombre */
+    --bg-color: #f4f7f6; /* Un fond légèrement plus chaud que le gris pur */
+    --card-bg: #fff;
+    --border-color: #e0e0e0; /* Un gris clair pour les bordures */
+    --error-color: #e74c3c; /* Un rouge plus doux pour les erreurs */
+    --success-color: #28a745; /* Vert succès */
+    --info-color: #3498db; /* Bleu info */
+    --hover-darken: 10%; /* Pour assombrir au survol */
 }
 
 /* Général */
 body {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  line-height: 1.6;
-  margin: 0;
-  padding: 0;
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
+/* Styles de l'en-tête (pour index.html) */
 header {
-  background-color: var(--secondary-color);
-  color: var(--light-text-color);
-  padding: 2rem 0;
-  text-align: center;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    background-color: var(--secondary-color);
+    color: var(--light-text-color);
+    padding: 2rem 0;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Conteneur du logo et du titre dans l'en-tête */
+.header-title-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 960px; /* Limite la largeur du contenu du header */
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 15px; /* Pour le padding sur les petits écrans */
+}
+
+.header-logo {
+    max-width: 80px; /* Taille du logo, ajustez si nécessaire */
+    height: auto;
 }
 
 header h1 {
-  margin: 0;
-  font-size: 2.5em;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 15px; /* Augmenté légèrement l'espace */
+    margin: 0;
+    font-size: 2.5em;
+    color: var(--light-text-color); /* S'assurer que le titre est bien blanc */
 }
 
 header h1 .fas {
-  font-size: 1.2em; /* Réduit un peu la taille de l'icône pour l'équilibre */
-  color: var(--primary-color); /* Couleur accent pour l'icône */
+    font-size: 1.2em;
+    color: var(--primary-color);
 }
 
 header p {
-  margin: 0.5rem 0 0;
-  font-size: 1.1em;
-  opacity: 0.9;
+    margin: 0.5rem 0 0;
+    font-size: 1.1em;
+    opacity: 0.9;
 }
 
 /* Navigation principale */
 .main-nav {
-  background-color: #34495e; /* Un peu plus clair que le header */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  margin-bottom: 25px; /* Plus d'espace sous la nav */
+    background-color: #34495e;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    margin-bottom: 25px;
 }
 
 .main-nav ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap; /* Permet le passage à la ligne sur petits écrans */
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 .main-nav li {
-  flex-grow: 1;
-  text-align: center;
+    flex-grow: 1;
+    text-align: center;
 }
 
 .main-nav a {
-  display: block;
-  padding: 18px 25px; /* Augmenté le padding pour des boutons plus cliquables */
-  color: var(--light-text-color);
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 1.05em;
-  transition: background-color 0.3s ease, color 0.3s ease;
-  white-space: nowrap; /* Empêche le texte de se casser sur plusieurs lignes */
+    display: block;
+    padding: 18px 25px;
+    color: var(--light-text-color);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.05em;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    white-space: nowrap;
 }
 
 .main-nav a:hover,
 .main-nav a.active-link {
-  background-color: var(--primary-color);
-  color: var(--card-bg); /* Texte blanc sur vert */
+    background-color: var(--primary-color);
+    color: var(--card-bg);
 }
 
 .main-nav a i {
-  margin-right: 10px; /* Augmenté l'espace entre icône et texte */
+    margin-right: 10px;
 }
 
 /* Main content layout */
 main {
-  max-width: 1000px; /* Augmenté la largeur maximale du contenu principal */
-  margin: 20px auto;
-  padding: 0 20px; /* Padding latéral pour l'espacement */
-  flex-grow: 1;
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 0 20px;
+    flex-grow: 1;
 }
 
 section {
-  background-color: var(--card-bg);
-  padding: 2.5rem; /* Augmenté le padding des sections */
-  margin-bottom: 30px; /* Plus d'espace entre les sections */
-  border-radius: 10px; /* Bords plus arrondis */
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08); /* Ombre plus prononcée */
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animation au survol */
+    background-color: var(--card-bg);
+    padding: 2.5rem;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 section:hover {
-  transform: translateY(-5px); /* Légère élévation au survol */
-  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
 }
 
 section h2 {
-  color: var(--secondary-color);
-  border-bottom: 3px solid var(--primary-color); /* Ligne plus épaisse */
-  padding-bottom: 15px;
-  margin-bottom: 25px; /* Plus d'espace sous le titre */
-  font-size: 2em; /* Titre plus grand */
-  display: flex;
-  align-items: center;
-  gap: 15px;
+    color: var(--secondary-color);
+    border-bottom: 3px solid var(--primary-color);
+    padding-bottom: 15px;
+    margin-bottom: 25px;
+    font-size: 2em;
+    display: flex;
+    align-items: center;
+    gap: 15px;
 }
 
 .input-group {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 20px; /* Augmenté l'espace */
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
 }
 
 .input-group label {
-  margin-bottom: 8px; /* Plus d'espace sous le label */
-  font-weight: bold;
-  color: var(--text-color);
-  display: flex;
-  align-items: center;
-  gap: 10px; /* Espace entre icône et label */
-  font-size: 1.05em;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.05em;
 }
 
 .input-group input[type="number"],
 .input-group select {
-  width: calc(100% - 20px); /* Ajusté pour le padding */
-  padding: 12px; /* Plus de padding */
-  border: 1px solid var(--border-color);
-  border-radius: 6px; /* Bords plus arrondis */
-  font-size: 1.05rem;
-  max-width: 350px; /* Légèrement augmenté la largeur max */
-  box-sizing: border-box;
-  background-color: #fdfdfd; /* Fond léger pour les inputs */
+    width: calc(100% - 20px);
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 1.05rem;
+    max-width: 350px;
+    box-sizing: border-box;
+    background-color: #fdfdfd;
 }
 
 .input-group select {
-  appearance: none;
-  background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22%231abc9c%22%3E%3Cpath%20d%3D%22M7%2010l5%205%205-5z%22%2F%3E%3C%2Fsvg%3E"); /* Nouvelle couleur pour la flèche */
-  background-repeat: no-repeat;
-  background-position: right 15px center; /* Plus d'espace à droite */
-  background-size: 1.8em; /* Taille de la flèche */
-  padding-right: 40px; /* Plus de padding pour la flèche */
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22%231abc9c%22%3E%3Cpath%20d%3D%22M7%2010l5%205%205-5z%22%2F%3E%3C%2Fsvg%3E");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 1.8em;
+    padding-right: 40px;
 }
 
 .input-group input[type="number"]:focus,
 .input-group select:focus {
-  border-color: var(--primary-color);
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(26, 188, 156, 0.3); /* Ombre focus plus douce */
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(26, 188, 156, 0.3);
 }
 
-/* Styles pour les messages d'erreur */
+/* Styles pour les messages d'erreur (génériques) */
 .error-message {
-  color: var(--error-color);
-  font-size: 0.9rem;
-  margin-top: 5px;
-  min-height: 20px; /* Assure une hauteur constante */
-  opacity: 0; /* Caché par défaut avec opacité */
-  transition: opacity 0.3s ease;
+    color: var(--error-color);
+    font-size: 0.9rem;
+    margin-top: 5px;
+    min-height: 20px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
 .error-message.visible {
-  opacity: 1; /* Visible */
+    opacity: 1;
 }
 
-button#calculateBtn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 15px;
-  width: 100%;
-  max-width: 350px; /* Légèrement plus large */
-  margin: 30px auto; /* Plus d'espace */
-  padding: 1.2rem 2.5rem; /* Plus de padding */
-  background: var(--primary-color);
-  color: white;
-  border: none;
-  border-radius: 8px; /* Plus arrondi */
-  font-size: 1.3rem; /* Texte plus grand */
-  cursor: pointer;
-  transition: background 0.3s ease, transform 0.2s ease;
-  box-shadow: 0 5px 15px rgba(26, 188, 156, 0.3); /* Ombre sur le bouton */
-}
-
-button#calculateBtn:hover {
-  background: color-mix(
-    in srgb,
-    var(--primary-color) var(--hover-darken),
-    black
-  ); /* Assombrit la couleur */
-  transform: translateY(-2px); /* Légère élévation au survol */
-}
-
-.results-section {
-  background: var(--card-bg);
-  padding: 2.5rem;
-  border-radius: 10px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-  text-align: center;
-  margin-top: 30px;
-}
-
-.results-section h2 {
-  color: var(--secondary-color);
-  border-bottom: 3px solid var(--accent-color); /* Couleur accent pour les résultats */
-  padding-bottom: 15px;
-  margin-bottom: 25px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 15px;
-}
-
-#results p {
-  font-size: 1.15rem; /* Taille de police légèrement augmentée */
-  color: var(--text-color);
-  margin-bottom: 10px;
-}
-
-#results strong {
-  color: var(--primary-color); /* Couleur primaire pour les chiffres clés */
-  font-size: 1.3rem; /* Chiffres plus grands */
-  font-weight: 600; /* Plus de gras */
-}
-
-.chart-container {
-  position: relative;
-  width: 100%;
-  max-width: 600px; /* Taille maximale du graphique ajustée */
-  margin: 30px auto;
-  background-color: #fcfcfc; /* Fond plus clair */
-  padding: 1.5rem;
-  border-radius: 10px;
-  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.08); /* Ombre intérieure plus douce */
-}
-
-.monetization-links {
-  margin-top: 35px; /* Plus d'espace */
-  border-top: 1px dashed var(--border-color);
-  padding-top: 25px;
-}
-
-.monetization-links h3 {
-  color: var(--secondary-color);
-  margin-bottom: 1.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 15px;
-  font-size: 1.6em; /* Titre plus grand */
-}
-
-.monetization-links a {
-  display: block;
-  background: var(
-    --accent-color
-  ); /* Couleur accent pour les liens de monétisation */
-  color: white;
-  padding: 1rem 1.8rem; /* Plus de padding */
-  margin: 10px auto; /* Marge constante */
-  border-radius: 6px;
-  text-decoration: none;
-  transition: background 0.3s ease, transform 0.2s ease;
-  max-width: 400px; /* Largeur maximale ajustée */
-  font-weight: 500;
-}
-
-.monetization-links a:hover {
-  background: color-mix(
-    in srgb,
-    var(--accent-color) var(--hover-darken),
-    black
-  );
-  transform: translateY(-2px);
-}
-
-footer {
-  text-align: center;
-  padding: 2rem 1rem; /* Plus de padding */
-  background: var(--secondary-color);
-  color: var(--light-text-color);
-  margin-top: 40px; /* Plus d'espace avant le footer */
-  font-size: 0.95em;
-  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
-}
-
-footer p {
-  margin: 8px 0;
-}
-
-/* Sections du site */
-.calculator-section,
-.car-specs-section {
-  display: none; /* Masqué par défaut */
-}
-
-.calculator-section.active,
-.car-specs-section.active {
-  display: block; /* Affiché quand la classe 'active' est présente */
-}
-
-/* Fiches Techniques Spécifiques */
-.car-specs-section {
-  background: var(--card-bg);
-  padding: 2.5rem;
-  margin-top: 30px;
-  border-radius: 10px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-}
-
-.car-specs-section h2 {
-  color: var(--secondary-color);
-  border-bottom: 3px solid var(--primary-color);
-  padding-bottom: 15px;
-  margin-bottom: 25px;
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  font-size: 2em;
-}
-
-.car-details-card {
-  background: #fcfcfc; /* Fond très clair */
-  border: 1px solid var(--border-color);
-  border-radius: 10px;
-  padding: 2rem;
-  margin-top: 25px;
-  display: flex;
-  flex-direction: column;
-  gap: 1.2rem; /* Plus d'espace entre les éléments */
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); /* Ombre légère */
-}
-
-.car-details-card img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 8px;
-  margin-bottom: 1.5rem;
-  object-fit: cover; /* S'assure que l'image couvre l'espace sans distorsion */
-}
-
-.car-details-card h3 {
-  color: var(--primary-color);
-  margin-top: 0;
-  margin-bottom: 1rem;
-  font-size: 1.8em;
-  border-bottom: 1px dashed var(--border-color); /* Ligne pointillée */
-  padding-bottom: 10px;
-}
-
-.car-details-card ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.car-details-card ul li {
-  margin-bottom: 10px; /* Plus d'espace entre les items de liste */
-  display: flex;
-  align-items: flex-start; /* Alignement en haut pour les textes longs */
-  gap: 12px;
-  font-size: 1.05rem;
-}
-
-.car-details-card ul li .fas {
-  color: var(--accent-color); /* Icônes avec couleur accent */
-  font-size: 1.1em;
-  flex-shrink: 0; /* Empêche l'icône de rétrécir */
-  padding-top: 3px; /* Ajustement vertical */
-}
-
-.car-details-card p {
-  margin: 0; /* Supprime les marges par défaut des paragraphes */
-  font-size: 1.05rem;
-}
-
-.car-details-card p strong {
-  color: var(--secondary-color);
-  margin-right: 5px;
-}
-
-.car-details-card .advantages-list,
-.car-details-card .disadvantages-list {
-  list-style: none;
-  padding: 0;
-  margin-top: 15px;
-  border-top: 1px solid var(--border-color);
-  padding-top: 15px;
-}
-
-.car-details-card .advantages-list h4,
-.car-details-card .disadvantages-list h4 {
-  color: var(--secondary-color);
-  margin-bottom: 10px;
-  font-size: 1.2em;
-}
-
-.car-details-card .advantages-list li,
-.car-details-card .disadvantages-list li {
-  display: flex;
-  align-items: flex-start;
-  gap: 8px;
-  font-size: 0.95rem;
-  margin-bottom: 8px;
-}
-
-.car-details-card .advantages-list li .fas.fa-check-circle {
-  color: #28a745; /* Vert plus vif */
-  font-size: 1.1em;
-  flex-shrink: 0;
-}
-
-.car-details-card .disadvantages-list li .fas.fa-times-circle {
-  color: #dc3545; /* Rouge plus vif */
-  font-size: 1.1em;
-  flex-shrink: 0;
-}
-
-/* Responsive Design */
-@media (max-width: 900px) {
-  main {
-    margin: 15px auto;
-    padding: 0 15px;
-  }
-
-  section {
-    padding: 2rem;
-    margin-bottom: 25px;
-  }
-
-  section h2 {
-    font-size: 1.8em;
-    gap: 10px;
-  }
-}
-
-@media (max-width: 768px) {
-  header h1 {
-    font-size: 2em;
-    gap: 10px;
-  }
-
-  .main-nav ul {
-    flex-direction: column;
-  }
-
-  .main-nav a {
-    padding: 15px 20px;
-    font-size: 1em;
-  }
-
-  .input-group input[type="number"],
-  .input-group select,
-  button#calculateBtn,
-  .monetization-links a {
-    width: 100%;
-    max-width: none;
-  }
-
-  .calculator-section,
-  .results-section,
-  .car-specs-section {
-    padding: 1.5rem;
-  }
-
-  .car-details-card {
-    padding: 1.5rem;
-  }
-
-  .car-details-card h3 {
-    font-size: 1.6em;
-  }
-
-  .car-details-card ul li {
-    font-size: 1rem;
-    gap: 10px;
-  }
-}
-
-@media (max-width: 480px) {
-  header h1 {
-    font-size: 1.8em;
-  }
-
-  section h2 {
-    font-size: 1.6em;
-  }
-
-  button#calculateBtn {
-    font-size: 1.1rem;
-    padding: 1rem 1.5rem;
-  }
-
-  /* ... (CSS existant) ... */
-
-  /* Styles pour les sections */
-  section {
-    display: none; /* Masquer toutes les sections par défaut */
-    padding: 20px;
-    margin-top: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-  }
-
-  section.active {
-    display: block; /* Afficher la section active */
-  }
-
-  /* Styles pour les liens de navigation */
-  .main-nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 20px 0;
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-  }
-
-  .main-nav li a {
-    text-decoration: none;
-    color: #555;
-    padding: 10px 20px;
-    border-radius: 5px;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-weight: bold;
-  }
-
-  .main-nav li a:hover {
-    background-color: #f0f0f0;
-    color: var(--primary-color);
-  }
-
-  .main-nav li a.active-link {
-    background-color: var(--primary-color);
-    color: white;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  }
-
-  /* Ajoutez ceci pour les nouveaux messages de résultats */
-  .result-message {
+/* Nouveaux messages de résultats (utilisés par JS) */
+.result-message {
     padding: 15px;
     margin-top: 20px;
     border-radius: 8px;
@@ -572,117 +214,391 @@ footer p {
     display: flex;
     align-items: center;
     gap: 10px;
-  }
+}
 
-  .success-message {
-    background-color: #e6f7ed; /* Vert très clair */
-    color: #28a745; /* Vert succès */
+.success-message {
+    background-color: #e6f7ed;
+    color: var(--success-color);
     border: 1px solid #c3e6cb;
-  }
+}
 
-  .error-message-text {
-    /* Renommé pour éviter un conflit avec .error-message global */
-    background-color: #fdeded; /* Rouge très clair */
-    color: #dc3545; /* Rouge erreur */
+/* Renommé pour éviter conflit avec .error-message global */
+.error-message-text {
+    background-color: #fdeded;
+    color: var(--error-color);
     border: 1px solid #f5c6cb;
-  }
+}
 
-  /* Styles pour l'affichage des détails de la voiture */
-  .car-details-section {
-    margin-top: 30px;
-    padding: 20px;
-    background-color: #f9f9f9;
+
+button#calculateBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    width: 100%;
+    max-width: 350px;
+    margin: 30px auto;
+    padding: 1.2rem 2.5rem;
+    background: var(--primary-color);
+    color: white;
+    border: none;
     border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  }
+    font-size: 1.3rem;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 5px 15px rgba(26, 188, 156, 0.3);
+}
 
-  .car-details-card {
-    background: #fff;
+button#calculateBtn:hover {
+    background: color-mix(in srgb, var(--primary-color) var(--hover-darken), black);
+    transform: translateY(-2px);
+}
+
+.results-section {
+    background: var(--card-bg);
+    padding: 2.5rem;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    margin-top: 30px;
+}
+
+.results-section h2 {
+    color: var(--secondary-color);
+    border-bottom: 3px solid var(--accent-color);
+    padding-bottom: 15px;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+#results p {
+    font-size: 1.15rem;
+    color: var(--text-color);
+    margin-bottom: 10px;
+}
+
+#results strong {
+    color: var(--primary-color);
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.chart-container {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    margin: 30px auto;
+    background-color: #fcfcfc;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.08);
+    /* Hauteur fixe pour le graphique - peut être ajustée via JS si besoin */
+    height: 400px;
+}
+
+.monetization-links {
+    margin-top: 35px;
+    border-top: 1px dashed var(--border-color);
+    padding-top: 25px;
+}
+
+.monetization-links h3 {
+    color: var(--secondary-color);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    font-size: 1.6em;
+}
+
+.monetization-links a {
+    display: block;
+    background: var(--accent-color);
+    color: white;
+    padding: 1rem 1.8rem;
+    margin: 10px auto;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background 0.3s ease, transform 0.2s ease;
+    max-width: 400px;
+    font-weight: 500;
+}
+
+.monetization-links a:hover {
+    background: color-mix(in srgb, var(--accent-color) var(--hover-darken), black);
+    transform: translateY(-2px);
+}
+
+footer {
+    text-align: center;
+    padding: 2rem 1rem;
+    background: var(--secondary-color);
+    color: var(--light-text-color);
+    margin-top: 40px;
+    font-size: 0.95em;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+}
+
+footer p {
+    margin: 8px 0;
+}
+
+/* Sections du site - Gestion de l'affichage avec JavaScript */
+#calculatorSection,
+#carSpecsSection {
+    display: none; /* Masqué par défaut */
+}
+
+#calculatorSection.active,
+#carSpecsSection.active {
+    display: block; /* Affiché quand la classe 'active' est présente */
+}
+
+/* Styles spécifiques pour les pages de fiches techniques générées (car-template.html) */
+/* C'est important de séparer ces styles pour éviter les conflits avec index.html */
+/* L'en-tête de la page de fiche technique */
+.car-page-header {
+    background-color: var(--secondary-color);
+    color: var(--light-text-color);
+    padding: 1rem 0;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Conteneur pour le logo et le texte dans le header de la fiche technique */
+.car-page-header .header-logo-container {
+    display: flex; /* Assurez-vous que le display flex est là pour l'alignement */
+    align-items: center;
+    justify-content: center;
+    gap: 10px; /* Espace un peu moins grand sur les pages individuelles */
+    flex-wrap: wrap; /* Pour gérer le retour à la ligne si besoin */
+    max-width: 960px; /* Limite la largeur du contenu du header */
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 15px;
+}
+
+
+.car-page-header .header-logo {
+    height: 50px; /* Taille du logo dans le header des fiches, ajustez au besoin */
+    width: auto;
+}
+
+.car-page-header .header-text-content h1 {
+    color: var(--light-text-color); /* Couleur du titre dans le header des fiches */
+    font-size: 2em; /* Taille du titre */
+    margin: 0;
+}
+
+.car-page-header .header-text-content p {
+    color: rgba(255, 255, 255, 0.8);
+    margin-top: 5px;
+    font-size: 1rem;
+}
+
+
+/* Corps principal de la fiche technique */
+.car-full-details {
+    max-width: 800px;
+    margin: 2rem auto;
+    background: var(--card-bg);
     padding: 2rem;
     border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Centrer le contenu de la carte */
-  }
-
-  .car-details-card img {
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+.car-full-details img {
     max-width: 100%;
     height: auto;
     border-radius: 8px;
     margin-bottom: 1.5rem;
-  }
-
-  .car-details-card h3 {
+}
+.car-full-details h1 {
     color: var(--secondary-color);
+    margin-top: 0;
     margin-bottom: 1rem;
     text-align: center;
-  }
-
-  .car-details-card ul {
+}
+.car-full-details h2 {
+    color: var(--primary-color);
+    border-bottom: 1px dashed var(--border-color);
+    padding-bottom: 0.5rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+}
+.car-full-details p, .car-full-details li {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    margin-bottom: 0.7rem;
+}
+.car-full-details ul {
     list-style: none;
     padding: 0;
-    width: 100%; /* S'assurer que les listes prennent toute la largeur */
-    max-width: 400px; /* Limiter la largeur pour une meilleure lisibilité */
     margin-bottom: 1.5rem;
-  }
-
-  .car-details-card ul li {
+}
+.car-full-details ul li {
     display: flex;
     align-items: center;
     gap: 10px;
     margin-bottom: 0.8rem;
-    font-size: 1.05rem;
-  }
-
-  .car-details-card ul li .fas {
-    color: var(--primary-color);
+}
+.car-full-details ul li .fas {
+    color: var(--primary-color); /* Couleur accent pour les icônes des caractéristiques */
     min-width: 20px;
-  }
-
-  .advantages-list,
-  .disadvantages-list {
-    margin-top: 1.5rem;
-    width: 100%;
-    max-width: 600px; /* Largeur plus grande pour les listes d'avantages/inconvénients */
-    text-align: left;
-  }
-
-  .advantages-list h4,
-  .disadvantages-list h4 {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    color: var(--secondary-color);
-    margin-bottom: 1rem;
-  }
-
-  .advantages-list li .fas {
-    color: #28a745;
-  } /* Vert pour les avantages */
-  .disadvantages-list li .fas {
-    color: #dc3545;
-  } /* Rouge pour les inconvénients */
-
-  .car-details-card a {
+}
+.car-full-details .advantages-list li .fas.fa-check-circle { color: var(--success-color); }
+.car-full-details .disadvantages-list li .fas.fa-times-circle { color: var(--error-color); }
+.back-link {
+    display: block;
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 1.1rem;
     color: var(--primary-color);
     text-decoration: none;
-    font-weight: bold;
-    margin-top: 1rem;
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-  }
-
-  .car-details-card a:hover {
+}
+.back-link:hover {
     text-decoration: underline;
-  }
+}
 
-  /* Styles pour le graphique Chart.js */
-  .chart-container {
-    position: relative;
-    height: 400px; /* Hauteur fixe pour le graphique */
-    width: 100%;
-    margin-top: 30px;
-  }
+/* Styles de la section "Allez plus loin" dans les fiches techniques */
+.monetization-links-car {
+    margin-top: 2.5rem;
+    border-top: 1px dashed var(--border-color);
+    padding-top: 2rem;
+    text-align: center;
+}
+
+.monetization-links-car h3 {
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.monetization-links-car a {
+    display: block;
+    background: var(--accent-color);
+    color: white;
+    padding: 0.8rem 1.5rem;
+    margin: 0.8rem auto;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background 0.3s ease;
+    max-width: 350px;
+}
+
+.monetization-links-car a:hover {
+    background: color-mix(in srgb, var(--accent-color) var(--hover-darken), black);
+}
+
+
+/* Responsive Design - Consolidation et Optimisation */
+@media (max-width: 900px) {
+    main {
+        margin: 15px auto;
+        padding: 0 15px;
+    }
+    section {
+        padding: 2rem;
+        margin-bottom: 25px;
+    }
+    section h2 {
+        font-size: 1.8em;
+        gap: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Styles pour l'en-tête et le logo */
+    .header-title-container {
+        /* flex-direction: column; <-- Suppression de cette ligne */
+        gap: 10px;
+        text-align: center; /* Conserve le centrage si des éléments restent sur une ligne mais sont plus étroits */
+    }
+    /* Correction pour l'en-tête des pages de fiches techniques sur tablette */
+    .car-page-header .header-logo-container {
+        /* flex-direction: column; <-- Suppression de cette ligne */
+        gap: 10px;
+    }
+
+    .header-logo {
+        max-width: 60px; /* Réduit un peu la taille du logo sur mobile pour index.html */
+    }
+    .car-page-header .header-logo {
+        height: 40px; /* Plus petit sur mobile pour les fiches techniques */
+    }
+
+    header h1, .car-page-header .header-text-content h1 {
+        font-size: 2em;
+    }
+
+    /* Navigation */
+    .main-nav ul {
+        flex-direction: column;
+    }
+    .main-nav a {
+        padding: 15px 20px;
+        font-size: 1em;
+    }
+
+    /* Formulaires et Boutons */
+    .input-group input[type="number"],
+    .input-group select,
+    button#calculateBtn,
+    .monetization-links a {
+        width: 100%;
+        max-width: none; /* Permet aux éléments de prendre toute la largeur disponible */
+    }
+
+    /* Sections Générales */
+    section,
+    .results-section,
+    .car-full-details { /* Appliquer aux fiches techniques aussi */
+        padding: 1.5rem;
+    }
+
+    /* Cartes de détails de voiture */
+    .car-details-card {
+        padding: 1.5rem;
+    }
+    .car-details-card h3 {
+        font-size: 1.6em;
+    }
+    .car-details-card ul li {
+        font-size: 1rem;
+        gap: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Ajout de flex-direction: column ici pour l'empilement sur très petits écrans */
+    .header-title-container,
+    .car-page-header .header-logo-container {
+        flex-direction: column;
+        gap: 5px; /* Réduit l'espace quand empilé */
+    }
+
+    header h1, .car-page-header .header-text-content h1 {
+        font-size: 1.8em;
+    }
+    section h2 {
+        font-size: 1.6em;
+    }
+    button#calculateBtn {
+        font-size: 1.1rem;
+        padding: 1rem 1.5rem;
+    }
+    /* La hauteur fixe du graphique peut être problématique sur mobile très étroit,
+       vous pouvez la rendre plus flexible ou la réduire si nécessaire */
+    .chart-container {
+        height: 300px; /* Réduit la hauteur sur les très petits écrans */
+    }
+    .car-full-details {
+        padding: 1rem; /* Réduit le padding sur les très petits écrans */
+    }
 }
