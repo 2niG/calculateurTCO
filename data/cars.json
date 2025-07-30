@@ -18,10 +18,17 @@
     "image": "images/tesla-model3.jpg",
     "description_courte": "La version restylée de la berline électrique de référence, avec un design affiné et plus de raffinement.",
     "avantages": ["Autonomie", "Technologie", "Réseau de Superchargeurs"],
-    "inconvenients": [
-      "Minimalisme de l'intérieur",
-      "Absence de compteurs derrière le volant"
-    ]
+    "inconvenients": ["Minimalisme de l'intérieur", "Absence de compteurs derrière le volant"],
+
+    "prix_achat_base": 42990,
+    "entretien_annuel": 200,
+    "assurance_annuelle": 700,
+    "valeur_revente": 30000,
+    "km_annuels": 15000,
+    "duree_possession": 5,
+    "prix_electricite": 0.25,
+    "aides_gouvernementales": 5000,
+    "cout_installation_borne": 1000
   },
   {
     "id": "renault-clio-e-tech-2024",
@@ -41,17 +48,19 @@
     "prix_a_partir": "24000 €",
     "image": "images/renault-clio-e-tech.jpg",
     "description_courte": "La citadine hybride française, reconnue pour son efficience, son design revisité et son agrément de conduite en ville.",
-    "avantages": [
-      "Faible consommation en ville",
-      "Confort de conduite",
-      "Design rafraîchi",
-      "Boîte de vitesses multi-modes innovante"
-    ],
-    "inconvenients": [
-      "Espace aux places arrière limité",
-      "Coffre légèrement réduit par rapport aux versions thermiques",
-      "Prix plus élevé que les versions essence classiques"
-    ]
+    "avantages": ["Faible consommation en ville", "Confort de conduite", "Design rafraîchi", "Boîte de vitesses multi-modes innovante"],
+    "inconvenients": ["Espace aux places arrière limité", "Coffre légèrement réduit par rapport aux versions thermiques", "Prix plus élevé que les versions essence classiques"],
+
+    "prix_achat_base": 24000,
+    "entretien_annuel": 350,
+    "assurance_annuelle": 580,
+    "valeur_revente": 15000,
+    "km_annuels": 12000,
+    "duree_possession": 5,
+    "prix_carburant": 1.80,
+    "prix_electricite": 0.25,
+    "conso_carburant_hybride": 4.2,
+    "prix_carburant_hybride": 1.80
   },
   {
     "id": "peugeot-3008-phev-2024",
@@ -71,18 +80,20 @@
     "prix_a_partir": "45000 €",
     "image": "images/peugeot-3008-phev.jpg",
     "description_courte": "Un SUV familial spacieux et confortable, avec la polyvalence de l'hybride rechargeable.",
-    "avantages": [
-      "Confort",
-      "Finition intérieure",
-      "Autonomie électrique suffisante pour le quotidien",
-      "Polyvalence (électrique et thermique)"
-    ],
-    "inconvenients": [
-      "Prix élevé",
-      "Poids important",
-      "Consommation thermique sur longs trajets si batterie vide",
-      "Pas de recharge rapide DC"
-    ]
+    "avantages": ["Confort", "Finition intérieure", "Autonomie électrique suffisante pour le quotidien", "Polyvalence (électrique et thermique)"],
+    "inconvenients": ["Prix élevé", "Poids important", "Consommation thermique sur longs trajets si batterie vide", "Pas de recharge rapide DC"],
+
+    "prix_achat_base": 45000,
+    "entretien_annuel": 400,
+    "assurance_annuelle": 650,
+    "valeur_revente": 28000,
+    "km_annuels": 15000,
+    "duree_possession": 5,
+    "prix_electricite": 0.25,
+    "aides_gouvernementales": 0,
+    "cout_installation_borne": 1000,
+    "conso_carburant_hybride": 5.5,
+    "prix_carburant_hybride": 1.80
   },
   {
     "id": "mg3-hybrid-plus-2024",
@@ -102,17 +113,19 @@
     "prix_a_partir": "20000 €",
     "image": "images/mg3.jpg",
     "description_courte": "Une citadine hybride abordable et performante, offrant une consommation maîtrisée et un bon niveau d'équipement.",
-    "avantages": [
-      "Prix très compétitif",
-      "Puissance élevée pour la catégorie",
-      "Consommation de carburant réduite en ville",
-      "Bonne garantie (7 ans)"
-    ],
-    "inconvenients": [
-      "Volume de coffre limité",
-      "Confort de suspension ferme à basse vitesse",
-      "Finition intérieure en deçà de certains concurrents"
-    ]
+    "avantages": ["Prix très compétitif", "Puissance élevée pour la catégorie", "Consommation de carburant réduite en ville", "Bonne garantie (7 ans)"],
+    "inconvenients": ["Volume de coffre limité", "Confort de suspension ferme à basse vitesse", "Finition intérieure en deçà de certains concurrents"],
+
+    "prix_achat_base": 20000,
+    "entretien_annuel": 300,
+    "assurance_annuelle": 500,
+    "valeur_revente": 12000,
+    "km_annuels": 10000,
+    "duree_possession": 5,
+    "prix_carburant": 1.80,
+    "prix_electricite": 0.25,
+    "conso_carburant_hybride": 4.4,
+    "prix_carburant_hybride": 1.80
   },
   {
     "id": "seat-leon-v-1-5-etsi-150-2024",
@@ -132,18 +145,19 @@
     "prix_a_partir": "30000 €",
     "image": "images/leon-V-etsi.jpg",
     "description_courte": "Une berline compacte au design dynamique, offrant un bon équilibre entre performances et consommation grâce à sa technologie hybride légère.",
-    "avantages": [
-      "Bonne réactivité du moteur",
-      "Consommation maîtrisée pour la puissance",
-      "Boîte DSG7 fluide",
-      "Design attrayant",
-      "Confort de suspension"
-    ],
-    "inconvenients": [
-      "Système hybride peu perceptible en conduite (pas de roulage 100% électrique significatif)",
-      "Certains plastiques intérieurs",
-      "Options qui peuvent faire monter le prix"
-    ]
+    "avantages": ["Bonne réactivité du moteur", "Consommation maîtrisée pour la puissance", "Boîte DSG7 fluide", "Design attrayant", "Confort de suspension"],
+    "inconvenients": ["Système hybride peu perceptible en conduite (pas de roulage 100% électrique significatif)", "Certains plastiques intérieurs", "Insonorisation perfectible à haute vitesse", "Options qui peuvent faire monter le prix"],
+
+    "prix_achat_base": 30000,
+    "entretien_annuel": 400,
+    "assurance_annuelle": 600,
+    "valeur_revente": 18000,
+    "km_annuels": 15000,
+    "duree_possession": 5,
+    "prix_carburant": 1.80,
+    "prix_electricite": 0.25,
+    "conso_carburant_hybride": 5.6,
+    "prix_carburant_hybride": 1.80
   },
   {
     "id": "seat-ibiza-1-0-tsi-110-dsg7",
@@ -163,18 +177,16 @@
     "prix_a_partir": "23000 €",
     "image": "images/Ibiza110.jpg",
     "description_courte": "La citadine polyvalente de Seat, reconnue pour son dynamisme et son agilité. Le moteur 1.0 TSI offre un bon compromis entre performances et efficience pour le quotidien.",
-    "avantages": [
-      "Moteur 110 ch volontaire et économe",
-      "Boîte DSG7 fluide et réactive",
-      "Comportement routier dynamique et agile",
-      "Habitabilité correcte pour la catégorie",
-      "Design moderne et distinctif"
-    ],
-    "inconvenients": [
-      "Qualité de certains matériaux intérieurs (plastiques durs)",
-      "Insonorisation perfectible à haute vitesse",
-      "Suspension ferme sur chaussée dégradée",
-      "Peu de nouveautés majeures par rapport aux générations précédentes"
-    ]
+    "avantages": ["Moteur 110 ch volontaire et économe", "Boîte DSG7 fluide et réactive", "Comportement routier dynamique et agile", "Habitabilité correcte pour la catégorie", "Design moderne et distinctif"],
+    "inconvenients": ["Qualité de certains matériaux intérieurs (plastiques durs)", "Insonorisation perfectible à haute vitesse", "Suspension ferme sur chaussée dégradée", "Peu de nouveautés majeures par rapport aux générations précédentes"],
+
+    "prix_achat_base": 23000,
+    "entretien_annuel": 350,
+    "assurance_annuelle": 550,
+    "valeur_revente": 10000,
+    "km_annuels": 12000,
+    "duree_possession": 5,
+    "prix_carburant": 1.80,
+    "carburant": "essence"
   }
 ]
