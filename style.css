@@ -384,7 +384,7 @@ footer p {
 
 
 .car-page-header .header-logo {
-    height: 50px; /* Taille du logo dans le header des fiches, ajustez au besoin */
+    height: 100px; /* Taille du logo dans le header des fiches, ajustez au besoin */
     width: auto;
 }
 
