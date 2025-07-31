@@ -247,7 +247,7 @@
     "marque": "Seat",
     "modele": "Ibiza V 1.5 TSI",
     "annee": "2021",
-    "type": "Essence",
+    "type": "Thermique (Essence)",
     "motorisation": "1.5 TSI 150 ch ACT DSG7",
     "autonomie_electrique_wlpt": "N/A (essence)",
     "batterie_utile": "N/A (essence)",
@@ -283,7 +283,8 @@
     "prix_carburant": 1.85,
     "prix_electricite": 0.25,
     "conso_carburant_hybride": 5.9,
-    "prix_carburant_hybride": 1.85
+    "prix_carburant_hybride": 1.85,
+    "carburant": "essence"
   },
   {
     "id": "mg-zs-hybrid-plus",
