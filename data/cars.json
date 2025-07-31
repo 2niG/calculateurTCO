@@ -18,7 +18,10 @@
     "image": "images/tesla-model3.jpg",
     "description_courte": "La version restylée de la berline électrique de référence, avec un design affiné et plus de raffinement.",
     "avantages": ["Autonomie", "Technologie", "Réseau de Superchargeurs"],
-    "inconvenients": ["Minimalisme de l'intérieur", "Absence de compteurs derrière le volant"],
+    "inconvenients": [
+      "Minimalisme de l'intérieur",
+      "Absence de compteurs derrière le volant"
+    ],
 
     "prix_achat_base": 42990,
     "entretien_annuel": 200,
@@ -48,8 +51,17 @@
     "prix_a_partir": "24000 €",
     "image": "images/renault-clio-e-tech.jpg",
     "description_courte": "La citadine hybride française, reconnue pour son efficience, son design revisité et son agrément de conduite en ville.",
-    "avantages": ["Faible consommation en ville", "Confort de conduite", "Design rafraîchi", "Boîte de vitesses multi-modes innovante"],
-    "inconvenients": ["Espace aux places arrière limité", "Coffre légèrement réduit par rapport aux versions thermiques", "Prix plus élevé que les versions essence classiques"],
+    "avantages": [
+      "Faible consommation en ville",
+      "Confort de conduite",
+      "Design rafraîchi",
+      "Boîte de vitesses multi-modes innovante"
+    ],
+    "inconvenients": [
+      "Espace aux places arrière limité",
+      "Coffre légèrement réduit par rapport aux versions thermiques",
+      "Prix plus élevé que les versions essence classiques"
+    ],
 
     "prix_achat_base": 24000,
     "entretien_annuel": 350,
@@ -57,10 +69,10 @@
     "valeur_revente": 15000,
     "km_annuels": 12000,
     "duree_possession": 5,
-    "prix_carburant": 1.80,
+    "prix_carburant": 1.8,
     "prix_electricite": 0.25,
     "conso_carburant_hybride": 4.2,
-    "prix_carburant_hybride": 1.80
+    "prix_carburant_hybride": 1.8
   },
   {
     "id": "peugeot-3008-phev-2024",
@@ -80,8 +92,18 @@
     "prix_a_partir": "45000 €",
     "image": "images/peugeot-3008-phev.jpg",
     "description_courte": "Un SUV familial spacieux et confortable, avec la polyvalence de l'hybride rechargeable.",
-    "avantages": ["Confort", "Finition intérieure", "Autonomie électrique suffisante pour le quotidien", "Polyvalence (électrique et thermique)"],
-    "inconvenients": ["Prix élevé", "Poids important", "Consommation thermique sur longs trajets si batterie vide", "Pas de recharge rapide DC"],
+    "avantages": [
+      "Confort",
+      "Finition intérieure",
+      "Autonomie électrique suffisante pour le quotidien",
+      "Polyvalence (électrique et thermique)"
+    ],
+    "inconvenients": [
+      "Prix élevé",
+      "Poids important",
+      "Consommation thermique sur longs trajets si batterie vide",
+      "Pas de recharge rapide DC"
+    ],
 
     "prix_achat_base": 45000,
     "entretien_annuel": 400,
@@ -93,7 +115,7 @@
     "aides_gouvernementales": 0,
     "cout_installation_borne": 1000,
     "conso_carburant_hybride": 5.5,
-    "prix_carburant_hybride": 1.80
+    "prix_carburant_hybride": 1.8
   },
   {
     "id": "mg3-hybrid-plus-2024",
@@ -113,8 +135,17 @@
     "prix_a_partir": "20000 €",
     "image": "images/mg3.jpg",
     "description_courte": "Une citadine hybride abordable et performante, offrant une consommation maîtrisée et un bon niveau d'équipement.",
-    "avantages": ["Prix très compétitif", "Puissance élevée pour la catégorie", "Consommation de carburant réduite en ville", "Bonne garantie (7 ans)"],
-    "inconvenients": ["Volume de coffre limité", "Confort de suspension ferme à basse vitesse", "Finition intérieure en deçà de certains concurrents"],
+    "avantages": [
+      "Prix très compétitif",
+      "Puissance élevée pour la catégorie",
+      "Consommation de carburant réduite en ville",
+      "Bonne garantie (7 ans)"
+    ],
+    "inconvenients": [
+      "Volume de coffre limité",
+      "Confort de suspension ferme à basse vitesse",
+      "Finition intérieure en deçà de certains concurrents"
+    ],
 
     "prix_achat_base": 20000,
     "entretien_annuel": 300,
@@ -122,10 +153,10 @@
     "valeur_revente": 12000,
     "km_annuels": 10000,
     "duree_possession": 5,
-    "prix_carburant": 1.80,
+    "prix_carburant": 1.8,
     "prix_electricite": 0.25,
     "conso_carburant_hybride": 4.4,
-    "prix_carburant_hybride": 1.80
+    "prix_carburant_hybride": 1.8
   },
   {
     "id": "seat-leon-v-1-5-etsi-150-2024",
@@ -145,8 +176,19 @@
     "prix_a_partir": "30000 €",
     "image": "images/leon-V-etsi.jpg",
     "description_courte": "Une berline compacte au design dynamique, offrant un bon équilibre entre performances et consommation grâce à sa technologie hybride légère.",
-    "avantages": ["Bonne réactivité du moteur", "Consommation maîtrisée pour la puissance", "Boîte DSG7 fluide", "Design attrayant", "Confort de suspension"],
-    "inconvenients": ["Système hybride peu perceptible en conduite (pas de roulage 100% électrique significatif)", "Certains plastiques intérieurs", "Insonorisation perfectible à haute vitesse", "Options qui peuvent faire monter le prix"],
+    "avantages": [
+      "Bonne réactivité du moteur",
+      "Consommation maîtrisée pour la puissance",
+      "Boîte DSG7 fluide",
+      "Design attrayant",
+      "Confort de suspension"
+    ],
+    "inconvenients": [
+      "Système hybride peu perceptible en conduite (pas de roulage 100% électrique significatif)",
+      "Certains plastiques intérieurs",
+      "Insonorisation perfectible à haute vitesse",
+      "Options qui peuvent faire monter le prix"
+    ],
 
     "prix_achat_base": 30000,
     "entretien_annuel": 400,
@@ -154,15 +196,15 @@
     "valeur_revente": 18000,
     "km_annuels": 15000,
     "duree_possession": 5,
-    "prix_carburant": 1.80,
+    "prix_carburant": 1.8,
     "prix_electricite": 0.25,
     "conso_carburant_hybride": 5.6,
-    "prix_carburant_hybride": 1.80
+    "prix_carburant_hybride": 1.8
   },
   {
     "id": "seat-ibiza-1-0-tsi-110-dsg7",
     "marque": "Seat",
-    "modele": "Ibiza",
+    "modele": "Ibiza 1.0 TSI 110 DSG7",
     "annee": "2024",
     "type": "Thermique (Essence)",
     "motorisation": "1.0 TSI 110 ch DSG7",
@@ -177,8 +219,19 @@
     "prix_a_partir": "23000 €",
     "image": "images/Ibiza110.jpg",
     "description_courte": "La citadine polyvalente de Seat, reconnue pour son dynamisme et son agilité. Le moteur 1.0 TSI offre un bon compromis entre performances et efficience pour le quotidien.",
-    "avantages": ["Moteur 110 ch volontaire et économe", "Boîte DSG7 fluide et réactive", "Comportement routier dynamique et agile", "Habitabilité correcte pour la catégorie", "Design moderne et distinctif"],
-    "inconvenients": ["Qualité de certains matériaux intérieurs (plastiques durs)", "Insonorisation perfectible à haute vitesse", "Suspension ferme sur chaussée dégradée", "Peu de nouveautés majeures par rapport aux générations précédentes"],
+    "avantages": [
+      "Moteur 110 ch volontaire et économe",
+      "Boîte DSG7 fluide et réactive",
+      "Comportement routier dynamique et agile",
+      "Habitabilité correcte pour la catégorie",
+      "Design moderne et distinctif"
+    ],
+    "inconvenients": [
+      "Qualité de certains matériaux intérieurs (plastiques durs)",
+      "Insonorisation perfectible à haute vitesse",
+      "Suspension ferme sur chaussée dégradée",
+      "Peu de nouveautés majeures par rapport aux générations précédentes"
+    ],
 
     "prix_achat_base": 23000,
     "entretien_annuel": 350,
@@ -186,7 +239,93 @@
     "valeur_revente": 10000,
     "km_annuels": 12000,
     "duree_possession": 5,
-    "prix_carburant": 1.80,
+    "prix_carburant": 1.8,
     "carburant": "essence"
+  },
+  {
+    "id": "seat-ibiza-v-1-5-tsi-150-2021",
+    "marque": "Seat",
+    "modele": "Ibiza V 1.5 TSI",
+    "annee": "2021",
+    "type": "Essence",
+    "motorisation": "1.5 TSI 150 ch ACT DSG7",
+    "autonomie_electrique_wlpt": "N/A (essence)",
+    "batterie_utile": "N/A (essence)",
+    "puissance_totale": "150 ch",
+    "0_100kmh": "8.1s",
+    "conso_mixte_wlpt": "5.9 L/100km",
+    "emissions_co2": "134 g/km",
+    "charge_ac_max": "N/A (essence)",
+    "charge_dc_max": "N/A (essence)",
+    "prix_a_partir": "26000 €",
+    "image": "images/ibiza-V-tsi.jpg",
+    "description_courte": "Une citadine polyvalente offrant des performances sportives grâce à son moteur 1.5 TSI de 150ch et sa boîte DSG7, dans une finition FR Xclusive très bien équipée.",
+    "avantages": [
+      "Moteur performant et coupleux",
+      "Boîte DSG7 rapide et douce",
+      "Design dynamique et sportif (finition FR)",
+      "Bonne habitabilité pour la catégorie",
+      "Équipement complet en version FR Xclusive",
+      "Comportement routier agile"
+    ],
+    "inconvenients": [
+      "Suspension ferme (version FR)",
+      "Consommation qui peut grimper en conduite sportive",
+      "Quelques plastiques durs à l'intérieur",
+      "Coffre correct mais sans plus"
+    ],
+    "prix_achat_base": 26000,
+    "entretien_annuel": 350,
+    "assurance_annuelle": 550,
+    "valeur_revente": 16000,
+    "km_annuels": 15000,
+    "duree_possession": 5,
+    "prix_carburant": 1.85,
+    "prix_electricite": 0.25,
+    "conso_carburant_hybride": 5.9,
+    "prix_carburant_hybride": 1.85
+  },
+  {
+    "id": "mg-zs-hybrid-plus",
+    "marque": "MG",
+    "modele": "ZS Hybrid+",
+    "annee": "2024",
+    "type": "Hybride non rechargeable (Full Hybrid)",
+    "motorisation": "1.5 VTI Hybrid+ 195 ch",
+    "autonomie_electrique_wlpt": "2 km (très faible, pour manœuvres ou très basse vitesse)",
+    "batterie_utile": "1.83 kWh (nominale)",
+    "puissance_totale": "195 ch",
+    "0_100kmh": "8.7s",
+    "conso_mixte_wlpt": "5.0 L/100km",
+    "emissions_co2": "113 g/km",
+    "charge_ac_max": "N/A (hybride non rechargeable)",
+    "charge_dc_max": "N/A (hybride non rechargeable)",
+    "prix_a_partir": "27000 € (estimation)",
+    "image": "images/mg-zs-hybrid-plus.jpg",
+    "description_courte": "Un SUV compact hybride non rechargeable offrant une puissance cumulée intéressante et une consommation contenue, idéal pour la ville et les trajets mixtes.",
+    "avantages": [
+      "Bonne puissance cumulée pour un SUV compact",
+      "Consommation de carburant maîtrisée",
+      "Transmission robotisée simple embrayage (BVR3) compacte",
+      "Moteur électrique puissant pour les basses vitesses",
+      "Espaces intérieurs généreux pour la catégorie",
+      "Prix généralement compétitif"
+    ],
+    "inconvenients": [
+      "Autonomie électrique très limitée",
+      "Vitesse maximale en électrique très basse (60 km/h)",
+      "Performances sur autoroute peuvent être limitées (vitesse max 168 km/h)",
+      "Peut-être moins raffiné que certains concurrents sur certains aspects"
+    ],
+    "prix_achat_base": 27000,
+    "entretien_annuel": 350,
+    "assurance_annuelle": 550,
+    "valeur_revente": 17000,
+    "km_annuels": 15000,
+    "duree_possession": 5,
+    "prix_carburant": 1.85,
+    "prix_electricite": 0.25,
+    "conso_carburant_hybride": 5.0,
+    "prix_carburant_hybride": 1.85
   }
 ]
