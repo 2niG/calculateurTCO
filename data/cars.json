@@ -417,5 +417,50 @@
     "conso_carburant_hybride": 6.5,
     "prix_carburant_hybride": 1.9,
     "carburant": "Essence (Mild-Hybrid)"
-  }
+  },
+  {
+    "id": "cupra-formentor-1-5-etsi-150ch-v-dsg7",
+    "marque": "CUPRA",
+    "modele": "Formentor 1.5 eTSI 150ch V DSG7",
+    "annee": "2024",
+    "type": "Hybride léger (mild-hybrid)",
+    "motorisation": "1.5 eTSI 150 ch",
+    "autonomie_electrique_wlpt": "N/A (Mild-hybrid, pas d'autonomie électrique significative)",
+    "batterie_utile": "N/A (Batterie 48V pour système mild-hybrid)",
+    "puissance_totale": "150 ch (110 kW)",
+    "0_100kmh": "8.9s",
+    "conso_mixte_wlpt": "6.6 L/100km (estimation WLTP)",
+    "emissions_co2": "149 g/km (WLTP)",
+    "charge_ac_max": "N/A",
+    "charge_dc_max": "N/A",
+    "prix_a_partir": "36000 € (estimation pour version V, le prix peut varier selon les offres et finitions)",
+    "image": "images/Cupra-Formentor-V.jpg",
+    "description_courte": "Le CUPRA Formentor 1.5 eTSI 150ch V DSG7 est un SUV coupé au design distinctif, propulsé par une motorisation micro-hybride essence. Il allie l'esthétique sportive de CUPRA à une efficacité améliorée grâce à sa technologie mild-hybrid.",
+    "avantages": [
+        "Design sportif et unique de SUV coupé",
+        "Boîte de vitesses DSG7 rapide et fluide",
+        "Confort de conduite au quotidien",
+        "Système mild-hybrid pour une consommation optimisée et une meilleure réactivité",
+        "Intérieur moderne et bien équipé avec un bon niveau de technologie",
+        "Position de conduite dynamique"
+    ],
+    "inconvenients": [
+        "Habitabilité arrière légèrement réduite pour les grands adultes due à la ligne de toit fuyante",
+        "Le système mild-hybrid n'offre pas de conduite en mode 100% électrique",
+        "Visibilité arrière un peu limitée",
+        "Prix qui peut rapidement grimper avec les options",
+        "Suspension ferme pour certains, surtout avec les grandes jantes"
+    ],
+    "prix_achat_base": 36000,
+    "entretien_annuel": 400,
+    "assurance_annuelle": 650,
+    "valeur_revente": 21000,
+    "km_annuels": 15000,
+    "duree_possession": 5,
+    "prix_carburant": 1.90,
+    "prix_electricite": 0.25,
+    "conso_carburant_hybride": 6.6,
+    "prix_carburant_hybride": 1.90,
+    "carburant": "Essence (Mild-Hybrid)"
+}
 ]
