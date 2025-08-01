@@ -372,5 +372,50 @@
     "conso_carburant_hybride": 5.0,
     "prix_carburant_hybride": 1.85,
     "carburant": "Hybride Rechargeable"
+  },
+  {
+    "id": "vw-tiguan-1-5-etsi-150ch-r-line-dsg7",
+    "marque": "Volkswagen",
+    "modele": "Tiguan 1.5 eTSI 150ch R-Line DSG7",
+    "annee": "2024",
+    "type": "Hybride léger (mild-hybrid)",
+    "motorisation": "1.5 eTSI 150 ch",
+    "autonomie_electrique_wlpt": "N/A (Mild-hybrid, pas d'autonomie électrique significative)",
+    "batterie_utile": "N/A (Batterie 48V pour système mild-hybrid)",
+    "puissance_totale": "150 ch (110 kW)",
+    "0_100kmh": "9.1s",
+    "conso_mixte_wlpt": "6.3 - 6.4 L/100km (estimation WLTP)",
+    "emissions_co2": "133 - 143 g/km (WLTP)",
+    "charge_ac_max": "N/A",
+    "charge_dc_max": "N/A",
+    "prix_a_partir": "50300 € (estimation, pour la version R-Line)",
+    "image": "images/tiguan_etsi_150.jpg",
+    "description_courte": "Le Volkswagen Tiguan 1.5 eTSI 150ch R-Line DSG7 est un SUV compact doté d'une motorisation micro-hybride essence performante et d'une finition sportive. Il offre un excellent compromis entre confort, technologies et dynamisme de conduite.",
+    "avantages": [
+      "Design sportif et élégant de la finition R-Line",
+      "Confort de conduite élevé",
+      "Boîte de vitesses DSG7 fluide et réactive",
+      "Technologies d'infodivertissement modernes",
+      "Bonne habitabilité et grand volume de coffre (652L)",
+      "Fiabilité reconnue de Volkswagen"
+    ],
+    "inconvenients": [
+      "Prix élevé pour la catégorie",
+      "Consommation de carburant potentiellement plus élevée que les versions diesel ou hybrides rechargeables",
+      "Le système mild-hybrid n'offre pas de conduite 100% électrique",
+      "Peut paraître moins dynamique que certains concurrents sur routes sinueuses",
+      "Poids à vide relativement élevé (1642 kg)"
+    ],
+    "prix_achat_base": 50300,
+    "entretien_annuel": 450,
+    "assurance_annuelle": 700,
+    "valeur_revente": 30000,
+    "km_annuels": 15000,
+    "duree_possession": 5,
+    "prix_carburant": 1.9,
+    "prix_electricite": 0.25,
+    "conso_carburant_hybride": 6.5,
+    "prix_carburant_hybride": 1.9,
+    "carburant": "Essence (Mild-Hybrid)"
   }
 ]
