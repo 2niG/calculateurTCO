@@ -291,7 +291,7 @@
     "marque": "MG",
     "modele": "ZS Hybrid+",
     "annee": "2024",
-    "type": "Hybride non rechargeable (Full Hybrid)",
+    "type": "Hybride (non rechargeable)",
     "motorisation": "1.5 VTI Hybrid+ 195 ch",
     "autonomie_electrique_wlpt": "2 km (très faible, pour manœuvres ou très basse vitesse)",
     "batterie_utile": "1.83 kWh (nominale)",
@@ -328,5 +328,49 @@
     "prix_electricite": 0.25,
     "conso_carburant_hybride": 5.0,
     "prix_carburant_hybride": 1.85
+  },
+  {
+    "id": "vw-golf-ehybrid-edition",
+    "marque": "Volkswagen",
+    "modele": "Golf eHybrid Edition",
+    "annee": "2024",
+    "type": "Hybride Rechargeable",
+    "motorisation": "1.5 TSI eHybrid 204 ch",
+    "autonomie_electrique_wlpt": "Jusqu'à 143 km (selon la version et cycle WLTP)",
+    "batterie_utile": "19.7 kWh (nominale)",
+    "puissance_totale": "204 ch",
+    "0_100kmh": "7.4s",
+    "conso_mixte_wlpt": "0.3 - 0.4 L/100km (en cycle combiné, batterie chargée)",
+    "emissions_co2": "6 - 9 g/km (WLTP)",
+    "charge_ac_max": "11 kW",
+    "charge_dc_max": "50 kW",
+    "prix_a_partir": "47300 € (estimation, pour la version Edition 50)",
+    "image": "images/golf-ehybrid-2025.jpg",
+    "description_courte": "La Volkswagen Golf eHybrid Edition est une berline compacte hybride rechargeable offrant une autonomie électrique significative, des performances équilibrées et la polyvalence reconnue de la Golf, avec des capacités de recharge améliorées.",
+    "avantages": [
+      "Grande autonomie électrique pour un usage quotidien",
+      "Possibilité de recharge rapide en DC (50 kW)",
+      "Faibles émissions de CO2 et consommation de carburant en mode hybride",
+      "Intérieur modernisé avec un nouveau système d'infodivertissement",
+      "Qualité de fabrication Volkswagen",
+      "Avantages fiscaux potentiels pour les véhicules hybrides rechargeables"
+    ],
+    "inconvenients": [
+      "Prix plus élevé que les versions thermiques ou micro-hybrides",
+      "Coffre légèrement réduit par rapport aux versions non-PHEV (273L)",
+      "Nécessite une recharge régulière pour maximiser l'efficacité",
+      "Le poids supplémentaire de la batterie peut affecter légèrement la maniabilité"
+    ],
+    "prix_achat_base": 47300,
+    "entretien_annuel": 400,
+    "assurance_annuelle": 600,
+    "valeur_revente": 28000,
+    "km_annuels": 15000,
+    "duree_possession": 5,
+    "prix_carburant": 1.85,
+    "prix_electricite": 0.25,
+    "conso_carburant_hybride": 5.0,
+    "prix_carburant_hybride": 1.85,
+    "carburant": "Hybride Rechargeable"
   }
 ]
